@@ -11,7 +11,7 @@
   min-width: 250px;
   max-width: 250px;
   min-height: 100vh;
-  background: #7386D5;
+  background: #4e4a59;
   color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -19,6 +19,16 @@
 
 #sidebar ul li > a {
   color: white;
+}
+
+.sidebar-bg {
+  width: 100%;
+  min-height: 150px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5))), url("/imgs/sidebar-bg.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5)), url("/imgs/sidebar-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #sidebar.active {
@@ -68,6 +78,7 @@ a[aria-expanded="true"] {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 100%;
+  overflow: hidden;
 }
 
 .content-heading {
