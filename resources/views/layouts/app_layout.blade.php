@@ -15,19 +15,23 @@
 
       <!-- Sidebar Links -->
       <ul class="list-unstyled components">
-         <li class="active"><a href="#">Home</a></li>
-         <li><a href="#">About</a></li>
+         <li class="active"><a href="#"><i class="menu-i material-icons">home</i>Dashboard</a></li>
+         <li><a href="#"><i class="menu-i material-icons">directions</i>Route Manager</a></li>
 
-         <li><!-- Link with dropdown items -->
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+         {{-- <li><!-- Link with dropdown items -->
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"> </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                <li><a href="#">Page</a></li>
                <li><a href="#">Page</a></li>
                <li><a href="#">Page</a></li>
             </ul>
-         </li>
-         <li><a href="#">Portfolio</a></li>
-         <li><a href="#">Contact</a></li>
+         </li> --}}
+         <li><a href="#"><i class="menu-i material-icons">announcement</i>Announcement Manager</a></li>
+         <li><a href="#"><i class="menu-i material-icons">directions_bus</i>Bus Manager</a></li>
+         <li><a href="#"><i class="menu-i material-icons">people</i>Driver Manager</a></li>
+         <li><a href="#"><i class="menu-i material-icons">store_mall_directory</i>Bus Stop Manager</a></li>
+         <li><a href="#"><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</a></li>
+         <li><a href="#"><i class="menu-i material-icons">assignment</i>Report Manager</a></li>
       </ul>
    </nav>
    <div id="content">

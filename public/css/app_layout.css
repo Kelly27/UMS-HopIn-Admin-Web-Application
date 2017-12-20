@@ -1,3 +1,7 @@
+body {
+  font-family: Roboto;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,8 +12,8 @@
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 270px;
+  max-width: 270px;
   min-height: 100vh;
   background: #4e4a59;
   color: #fff;
@@ -32,7 +36,7 @@
 }
 
 #sidebar.active {
-  margin-left: -250px;
+  margin-left: -270px;
 }
 
 a[data-toggle="collapse"] {
@@ -44,7 +48,7 @@ a[aria-expanded="true"]::before {
   content: '\E259';
   display: block;
   position: absolute;
-  right: -194px;
+  right: -178px;
   font-family: 'Glyphicons Halflings';
   font-size: 0.8em;
 }
@@ -55,7 +59,7 @@ a[aria-expanded="true"]::before {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -250px;
+    margin-left: -270px;
   }
 
   #sidebar.active {
@@ -71,7 +75,6 @@ a[aria-expanded="true"]::before {
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
-  background: #6d7fcc;
 }
 
 #content {
@@ -112,5 +115,35 @@ a[aria-expanded="true"] {
 
 .nav > li > a {
   background-color: transparent !important;
+}
+
+.components {
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.components > li {
+  padding: 3px 5px 0px 20px;
+}
+
+.components > li > a {
+  color: #3e8ab7 !important;
+  text-decoration: none;
+}
+
+.components > .active {
+  background: #22aed1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.components > .active > * {
+  color: #10505f !important;
+}
+
+.menu-i {
+  padding-right: 15px;
+  font-size: 20px;
 }
 
