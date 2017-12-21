@@ -144,6 +144,8 @@ a[aria-expanded="true"] {
 
 .menu-i {
   padding-right: 15px;
-  font-size: 20px;
+  font-size: 22px;
+  position: relative;
+  bottom: -5px;
 }
 
