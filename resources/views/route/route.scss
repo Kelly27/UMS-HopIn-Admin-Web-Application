@@ -1,0 +1,68 @@
+.routeManagerPage{
+    table{
+        width: 90%;
+        margin-top: 20px;
+        text-align: center;
+        thead{
+            background-color: #0379be;
+            color: white;
+            tr > td{
+                padding: 7px;
+            }
+        }
+        tbody{
+            background-color: white;
+            tr > td{
+                padding: 7px;
+                border-bottom: 1px solid #abb1b8;
+            }
+        }
+    }
+}
+
+.createRoutePage{
+    h3, h5{
+        color: #000;
+        font-weight: 300;
+    }
+    h5{
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    input, textarea{
+        border-radius: 5px;
+        border: 2px solid #cccccc;
+        padding: 5px 10px;
+    }
+    .route_name, .route_desc{
+        input{
+            width: 100%;
+        }
+        textarea{
+            width: 100%;
+        }
+    }
+    #ID_input{
+        width: 15%;
+    }
+    .bus_stop_input{
+        border: 2px solid #cccccc;
+        background-color: #f2f2f2;
+        padding: 5px 10px;
+        border-radius: 5px;
+        label{
+            color: black;
+            margin: 0 5px;
+        }
+    }
+    .reset-btn{
+        position: absolute;
+        top: 40px;
+        right: 25px;
+        background-color: #CD3331FF;
+        color: #fff;
+        border-radius: 3px;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+}

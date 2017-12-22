@@ -50,18 +50,6 @@ a[aria-expanded="true"]::before {
    content: '\e260';
 }
 
-@media (max-width: 768px) {
-   #sidebar {
-     margin-left: -270px;
-  }
-  #sidebar.active {
-     margin-left: 0;
-  }
-  #content, .content-heading{
-   min-width: 100%;
-}
-}
-
 #sidebar ul li.active > a, a[aria-expanded="true"] {
    color: #fff;
 }
@@ -109,13 +97,14 @@ a[aria-expanded="true"]::before {
       padding: 3px 5px 0px 20px;
    }
    & > li > a{
-      color: #3e8ab7 !important;
+      color: #82d0ff !important;
       text-decoration: none;
    }
    & > .active {
       background: #22aed1;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin-top: 3px;
       & > *{
          color: #10505f !important;
       }
@@ -127,4 +116,50 @@ a[aria-expanded="true"]::before {
    font-size: 22px;
    position: relative;
    bottom: -5px;
+}
+
+.contentPage{
+   margin-top: 25px;
+   margin-left: 88px;
+   margin-right: 80px;
+}
+
+.basic-btn{
+   background-color: #0379be;
+   color: white;
+   border: none;
+   box-shadow: 1px 2px 4px 0px #4a4a4a;
+   color: white !important;
+   
+}
+
+.inputForm{
+   border: 2px solid #abb1b8;
+   margin-top: 20px;
+   padding: 25px;
+   border-radius: 20px;
+   background-color: white;
+
+}
+
+.submit-btn{
+   float: right;
+}
+
+@media (max-width: 768px) {
+   #sidebar {
+    margin-left: -270px;
+   }
+   #sidebar.active {
+    margin-left: 0;
+   }
+   #content, .content-heading{
+   min-width: 100%;
+   }
+   .contentPage{
+      margin: 0 0 0 20px;
+   }
+   .submit-btn{
+      float: left;
+   }
 }

@@ -11,12 +11,21 @@
 |
 */
 
-Route::get('/', function(){
-    return redirect('home');
-});
-
-Route::get('home', 'HomeController@index')->name('home');
-
-Route::get('announcement', 'AnnouncementController@index');
 
 Auth::routes();
+
+Route::group(['middleware' => ['web','auth']], function () {
+
+    Route::get('/', function(){
+        return redirect('home');
+    });
+
+    Route::get('home', 'HomeController@index')->name('home');
+
+    Route::get('announcement', 'AnnouncementController@index')->name('announcement');
+
+    Route::get('route', 'RouteController@index')->name('route');
+    Route::get('route/create', 'RouteController@create')->name('createRoute');
+    Route::post('route/store', 'RouteController@store')->name('storeRoute');
+    
+});

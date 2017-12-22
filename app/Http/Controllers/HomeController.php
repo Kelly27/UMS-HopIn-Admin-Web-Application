@@ -27,7 +27,7 @@ class HomeController extends Controller
             return view('app.login');
         }
         else{
-            return view('home');
+            return view('dashboard.index', ["user" => Auth::user()['name']]);
         }
     }
 }

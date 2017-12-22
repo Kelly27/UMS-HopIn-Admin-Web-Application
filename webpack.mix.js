@@ -17,4 +17,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.browserSync('localhost:8000');
 
 mix.sass('resources/views/auth/login.scss', 'public/css')
-    .sass('resources/views/layouts/app_layout.scss', 'public/css');
+    .sass('resources/views/layouts/app_layout.scss', 'public/css')
+    .sass('resources/views/dashboard/dashboard.scss', 'public/css')
+    .sass('resources/views/route/route.scss', 'public/css');

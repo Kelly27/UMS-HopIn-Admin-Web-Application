@@ -2,6 +2,7 @@
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('css/app_layout.css')}}">
+@yield('content_style')
 @endsection
 
 @section('body')
@@ -15,8 +16,8 @@
 
       <!-- Sidebar Links -->
       <ul class="list-unstyled components">
-         <li class="active"><a href="#"><i class="menu-i material-icons">home</i>Dashboard</a></li>
-         <li><a href="#"><i class="menu-i material-icons">directions</i>Route Manager</a></li>
+         <li class="<?php if (Request::segment(1) == "home") {echo "active";} ?>"><a href={{route('home')}}><i class="menu-i material-icons">home</i>Dashboard</a></li>
+         <li class="<?php if (Request::segment(1) == "route") {echo "active";} ?>"><a href="{{route("route")}}"><i class="menu-i material-icons">directions</i>Route Manager</a></li>
 
          {{-- <li><!-- Link with dropdown items -->
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"> </a>
@@ -37,10 +38,11 @@
    <div id="content">
       <div class="content-heading container-fluid">
          <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="color: white;">
                <button type="button" id="sidebarCollapse" class="btn menu-btn">
                    <i class="glyphicon glyphicon-menu-hamburger"></i>
                </button>
+               @yield('title')
             </div>
             <div class="col-sm-2 hidden-sm hidden-xs ">
                <div class="desktop_profile nav">

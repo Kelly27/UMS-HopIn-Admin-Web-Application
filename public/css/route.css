@@ -1,0 +1,79 @@
+.routeManagerPage table {
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.routeManagerPage table thead {
+  background-color: #0379be;
+  color: white;
+}
+
+.routeManagerPage table thead tr > td {
+  padding: 7px;
+}
+
+.routeManagerPage table tbody {
+  background-color: white;
+}
+
+.routeManagerPage table tbody tr > td {
+  padding: 7px;
+  border-bottom: 1px solid #abb1b8;
+}
+
+.createRoutePage h3,
+.createRoutePage h5 {
+  color: #000;
+  font-weight: 300;
+}
+
+.createRoutePage h5 {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.createRoutePage input,
+.createRoutePage textarea {
+  border-radius: 5px;
+  border: 2px solid #cccccc;
+  padding: 5px 10px;
+}
+
+.createRoutePage .route_name input,
+.createRoutePage .route_desc input {
+  width: 100%;
+}
+
+.createRoutePage .route_name textarea,
+.createRoutePage .route_desc textarea {
+  width: 100%;
+}
+
+.createRoutePage #ID_input {
+  width: 15%;
+}
+
+.createRoutePage .bus_stop_input {
+  border: 2px solid #cccccc;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.createRoutePage .bus_stop_input label {
+  color: black;
+  margin: 0 5px;
+}
+
+.createRoutePage .reset-btn {
+  position: absolute;
+  top: 40px;
+  right: 25px;
+  background-color: #CD3331FF;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
