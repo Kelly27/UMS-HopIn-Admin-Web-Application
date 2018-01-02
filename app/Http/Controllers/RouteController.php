@@ -14,8 +14,13 @@ class RouteController extends Controller
      */
     public function index()
     {
-        
-        return view('route.index');
+        // $result = \Guzzle::get('https://umsbus2017.000webhostapp.com/announcement.json');
+        // dd(json_decode($result->getBody()));
+        $routes = Route::orderBy('created_at', 'DESC')->get();
+        $fp = fopen('route.json', 'w');
+        fwrite($fp, json_encode($routes));
+        fclose($fp);
+        return view('route.index', ['routes' => $routes]);
     }
 
     /**
@@ -25,8 +30,7 @@ class RouteController extends Controller
      */
     public function create()
     {
-        // dd(Route::count());
-        return view('route.create');
+        return view('route.create', ['new_id' => Route::count() + 1]);
     }
 
     /**
@@ -37,7 +41,14 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input('route_array'));
+        $route = new Route;
+        $route->title = $request->input('route_name');
+        $route->description = $request->input('route_desc');
+        $route->bus_stops = json_encode($request->input('bus_stop'));
+        $route->route_arr = $request->input('route_arr');
+        $route->save();
+
+        return redirect('route');
     }
 
     /**

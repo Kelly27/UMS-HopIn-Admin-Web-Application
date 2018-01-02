@@ -24,7 +24,7 @@
                 <div class="col-sm-7">
                     <h5>ID</h5>
                     <div id="ID_input">
-                        {{Form::text('id', null, ['placeholder' => 'id', 'disabled' => 'disabled'] )}}
+                        {{Form::text('id', $new_id, ['disabled' => 'disabled'] )}}
                     </div>
                     <div class="route_name">
                         <h5>Route Name</h5>
@@ -38,13 +38,13 @@
                 <div class="col-sm-4">
                     <h5>Bus Stop that involved</h5>
                     <div class="bus_stop_input">
-                        {{Form::checkbox('bus_Stop', 'FSSA')}} {{Form::label('FSSA', 'FSSA')}} 
+                        {{Form::checkbox('bus_stop[]', 'FSSA')}} {{Form::label('FSSA', 'FSSA')}} 
                         <br>
-                        {{Form::checkbox('bus_Stop', 'FKJ')}} {{Form::label('FKJ', 'FKJ')}}
+                        {{Form::checkbox('bus_stop[]', 'FKJ')}} {{Form::label('FKJ', 'FKJ')}}
                         <br>
-                        {{Form::checkbox('bus_Stop', 'FSSA')}} {{Form::label('FSSA', 'FSSA')}} 
+                        {{Form::checkbox('bus_stop[]', 'FKSW')}} {{Form::label('FKSW', 'FKSW')}} 
                         <br>
-                        {{Form::checkbox('bus_Stop', 'FKJ')}} {{Form::label('FKJ', 'FKJ')}}
+                        {{Form::checkbox('bus_stop[]', 'FKI')}} {{Form::label('FKI', 'FKI')}}
                         <br>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h5>Route</h5>
-                    <div style="position: absolute; visibility: hidden;"><textarea name="route_array" id="setRouteArr"></textarea></div>
+                    <div style="position: absolute; visibility: hidden;"><textarea name="route_arr" id="setRouteArr"></textarea></div>
                     <div id="map" style="width: 100%; height: 500px;"></div>
                     <a class="reset-btn" href="javascript:void(0)" onclick="resetRoute()">Reset</a>
                 </div>

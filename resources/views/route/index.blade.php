@@ -21,12 +21,14 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($routes as $route)
                 <tr>
-                    <td>a</td>
-                    <td>d</td>
-                    <td>f</td>
-                    <td>d</td>
+                    <td>{{$route->id}}</td>
+                    <td>{{$route->title}}</td>
+                    <td>{{$route->description}}</td>
+                    <td></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
