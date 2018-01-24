@@ -11,10 +11,13 @@
 @section('content')
     <div class="routeManagerPage container-fluid contentPage">
         <a href="{{route('createRoute')}}"><button class="btn basic-btn">ADD</button></a>
+        @if(session()->has('message'))
+        <div class="alert alert-info">{{session()->get('message')}}</div>
+        @endif
         <table>
             <thead>
                 <tr>
-                    <td>ID</td>
+                    {{-- <td>ID</td> --}}
                     <td>Route Name</td>
                     <td>Route Description</td>
                     <td>Route Action</td>
@@ -23,10 +26,10 @@
             <tbody>
                 @foreach($routes as $route)
                 <tr>
-                    <td>{{$route->id}}</td>
+                    {{-- <td>{{$route->id}}</td> --}}
                     <td>{{$route->title}}</td>
                     <td>{{$route->description}}</td>
-                    <td><a href="{{URL::to('route/'. $route->id . '/edit')}}" class="action"><i class="material-icons">mode_edit</i></a><a href="#" class="action"><i class="material-icons">delete</i></a></td>
+                    <td><a href="{{URL::to('route/'. $route->id . '/edit')}}" class="action"><i class="material-icons">mode_edit</i></a><a href="{{URL::to('route/' . $route->id . '/delete')}}" class="action"><i class="material-icons">delete</i></a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -28,5 +28,6 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('route/create', 'RouteController@create')->name('createRoute');
     Route::post('route/store', 'RouteController@store')->name('storeRoute');
     Route::get('route/{id}/edit', 'RouteController@edit');
+    Route::get('route/{id}/delete', 'RouteController@destroy');
 
 });

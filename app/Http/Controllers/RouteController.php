@@ -33,7 +33,8 @@ class RouteController extends Controller
      */
     public function create()
     {
-        return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
+        // return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
+        return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr]);
     }
 
     /**
@@ -113,8 +114,10 @@ class RouteController extends Controller
      * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Route $route)
+    public function destroy(Route $route, $id)
     {
-        //
+        Route::destroy($id);
+        return redirect('route')->with('message', 'Route has been deleted succesfully');
+
     }
 }

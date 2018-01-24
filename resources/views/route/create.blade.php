@@ -31,10 +31,10 @@
                     </div>
                 @endif
                 <div class="col-sm-7">
-                    <h5>ID</h5>
+                    {{-- <h5>ID</h5>
                     <div id="ID_input">
                         {{Form::text('id', $id, ['disabled' => 'disabled'] )}}
-                    </div>
+                    </div> --}}
                     <div class="route_name">
                         <h5>Route Name</h5>
                         @if(isset($route_name))
@@ -56,9 +56,14 @@
                     <h5>Bus Stop that involved</h5>
                     <div class="bus_stop_input">
                         @foreach($bus_stop_arr as $option)
-                            @if(in_array($option, $bus_stop))
-                                {{Form::checkbox('bus_stop[]', $option, true)}} {{Form::label($option, $option)}}
-                                <br>
+                            @if(isset($bus_stop))
+                                @if(in_array($option, $bus_stop))
+                                    {{Form::checkbox('bus_stop[]', $option, true)}} {{Form::label($option, $option)}}
+                                    <br>
+                                @else
+                                    {{Form::checkbox('bus_stop[]', $option)}} {{Form::label($option, $option)}}
+                                    <br>
+                                @endif
                             @else
                                 {{Form::checkbox('bus_stop[]', $option)}} {{Form::label($option, $option)}}
                                 <br>
@@ -69,8 +74,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <h5>Route</h5>
+                    <h5>Route KIV!!!!!!!!!!!!</h5>
+                    {{-- @php var_dump($route_arr); @endphp --}}
                     <div style="position: absolute; visibility: hidden;"><textarea name="route_arr" id="setRouteArr"></textarea></div>
+                    {{-- <div id="map" value={{$route_arr}} style="width: 100%; height: 500px;"></div> --}}
                     <div id="map" style="width: 100%; height: 500px;"></div>
                     <a class="reset-btn" href="javascript:void(0)" onclick="resetRoute()">Reset</a>
                 </div>
@@ -88,8 +95,10 @@
         map = new google.maps.Map(document.getElementById('map'), {
         zoom: 17,
         center: {lat: 6.0333, lng: 116.1229},
-        // disableDefaultUI: true
+        disableDefaultUI: true
         });
+
+        {{-- var routeMap_edit_data = JSON.parse(document.getElementById('map').getAttribute('value')); --}}
 
         poly = new google.maps.Polyline({
           strokeColor: '#000000',
