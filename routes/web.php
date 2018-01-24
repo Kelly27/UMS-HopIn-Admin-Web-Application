@@ -29,5 +29,6 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::post('route/store', 'RouteController@store')->name('storeRoute');
     Route::get('route/{id}/edit', 'RouteController@edit');
     Route::get('route/{id}/delete', 'RouteController@destroy');
+    Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
 
 });

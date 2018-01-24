@@ -10,29 +10,35 @@
 
 @section('content')
     <div class="routeManagerPage container-fluid contentPage">
-        <a href="{{route('createRoute')}}"><button class="btn basic-btn">ADD</button></a>
+        <a href="{{route('createRoute')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
-        <div class="alert alert-info">{{session()->get('message')}}</div>
+        <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
-        <table>
-            <thead>
-                <tr>
-                    {{-- <td>ID</td> --}}
-                    <td>Route Name</td>
-                    <td>Route Description</td>
-                    <td>Route Action</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($routes as $route)
-                <tr>
-                    {{-- <td>{{$route->id}}</td> --}}
-                    <td>{{$route->title}}</td>
-                    <td>{{$route->description}}</td>
-                    <td><a href="{{URL::to('route/'. $route->id . '/edit')}}" class="action"><i class="material-icons">mode_edit</i></a><a href="{{URL::to('route/' . $route->id . '/delete')}}" class="action"><i class="material-icons">delete</i></a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <table class="table table-bordered" id="routes-table">
+        <thead>
+            <tr>
+                <td>Route Name</td>
+                <td>Route Description</td>
+                <td>Route Action</td>
+            </tr>
+        </thead>
+    </table>
     </div>
+@endsection
+
+@section('script')
+<script>
+$(function() {
+    $('#routes-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('route_datatables.data') !!}',
+        columns: [
+            { data: 'title', name: 'title' },
+            { data: 'description', name: 'description' },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+        ]
+    });
+});
+</script>
 @endsection

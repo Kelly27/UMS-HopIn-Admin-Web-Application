@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Route;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class RouteController extends Controller
 {
@@ -17,6 +18,7 @@ class RouteController extends Controller
 
     public function index()
     {
+
         // $result = \Guzzle::get('https://umsbus2017.000webhostapp.com/announcement.json');
         // dd(json_decode($result->getBody()));
         $routes = Route::orderBy('created_at', 'DESC')->get();
@@ -26,6 +28,16 @@ class RouteController extends Controller
         return view('route.index', ['routes' => $routes]);
     }
 
+    //datatable purpose
+    public function anyData()
+    {
+        $routes = Route::query();
+        return Datatables::of($routes)
+            ->addColumn('action', function($route){
+                return '<a href="route/' . $route->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="route/' . $route->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
+            })
+            ->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      *

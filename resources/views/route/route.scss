@@ -3,19 +3,20 @@
         width: 90%;
         margin-top: 20px;
         text-align: center;
+        border: none !important;
         thead{
             background-color: #0379be;
             color: white;
-            tr > td{
-                padding: 7px;
+            td{
+                border: none !important;
             }
         }
         tbody{
             background-color: white;
             color: black;
-            tr > td{
-                padding: 10px;
-                border-bottom: 1px solid #abb1b8;
+            td{
+                border: none !important;
+                border-bottom: 1px solid #abb1b8 !important;
             }
         }
     }
@@ -25,8 +26,20 @@
             color: #949292;
         }
     }
+    
+    .dataTables_wrapper .dataTables_paginate .paginate_button{
+        border-radius: 5px !important;
+        padding: 3px;
+        border: none;
+        .current{
+            background-color: blue !important;
+        }
+    }
 }
-
+.dataTables_wrapper .dataTables_paginate .paginate_button.current
+{
+    background-color: blue !important;
+}
 .createRoutePage{
     h3, h5{
         color: #000;

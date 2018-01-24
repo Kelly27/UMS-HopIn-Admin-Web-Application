@@ -9,7 +9,8 @@
         "kozz/laravel-guzzle-provider": "~5.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0"
+        "laravelcollective/html": "^5.4.0",
+        "yajra/laravel-datatables-oracle": "^7.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

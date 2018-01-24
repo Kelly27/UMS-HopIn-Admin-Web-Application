@@ -2,6 +2,7 @@
   width: 90%;
   margin-top: 20px;
   text-align: center;
+  border: none !important;
 }
 
 .routeManagerPage table thead {
@@ -9,8 +10,8 @@
   color: white;
 }
 
-.routeManagerPage table thead tr > td {
-  padding: 7px;
+.routeManagerPage table thead td {
+  border: none !important;
 }
 
 .routeManagerPage table tbody {
@@ -18,9 +19,9 @@
   color: black;
 }
 
-.routeManagerPage table tbody tr > td {
-  padding: 10px;
-  border-bottom: 1px solid #abb1b8;
+.routeManagerPage table tbody td {
+  border: none !important;
+  border-bottom: 1px solid #abb1b8 !important;
 }
 
 .routeManagerPage .action {
@@ -29,6 +30,20 @@
 
 .routeManagerPage .action:hover {
   color: #949292;
+}
+
+.routeManagerPage .dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: 5px !important;
+  padding: 3px;
+  border: none;
+}
+
+.routeManagerPage .dataTables_wrapper .dataTables_paginate .paginate_button .current {
+  background-color: blue !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: blue !important;
 }
 
 .createRoutePage h3,
