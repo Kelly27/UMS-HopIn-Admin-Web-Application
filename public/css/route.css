@@ -1,13 +1,7 @@
 .routeManagerPage table {
   width: 90%;
   margin-top: 20px;
-  text-align: center;
   border: none !important;
-}
-
-.routeManagerPage table thead {
-  background-color: #0379be;
-  color: white;
 }
 
 .routeManagerPage table thead td {
@@ -22,6 +16,10 @@
 .routeManagerPage table tbody td {
   border: none !important;
   border-bottom: 1px solid #abb1b8 !important;
+  width: 20px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .routeManagerPage .action {

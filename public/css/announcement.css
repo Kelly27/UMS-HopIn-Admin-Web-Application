@@ -1,0 +1,42 @@
+.AnnouncementManagerPage table {
+  width: 90%;
+  margin-top: 20px;
+  border: none !important;
+}
+
+.AnnouncementManagerPage table thead td {
+  border: none !important;
+}
+
+.AnnouncementManagerPage table tbody {
+  background-color: white;
+  color: black;
+}
+
+.AnnouncementManagerPage table tbody td {
+  border: none !important;
+  border-bottom: 1px solid #abb1b8 !important;
+}
+
+.AnnouncementManagerPage table tbody td:nth-child(2) {
+  height: 3.6em !important;
+}
+
+.AnnouncementManagerPage .action {
+  color: #666666;
+}
+
+.AnnouncementManagerPage .action:hover {
+  color: #949292;
+}
+
+.AnnouncementManagerPage .dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: 5px !important;
+  padding: 3px;
+  border: none;
+}
+
+.AnnouncementManagerPage .dataTables_wrapper .dataTables_paginate .paginate_button .current {
+  background-color: blue !important;
+}
+

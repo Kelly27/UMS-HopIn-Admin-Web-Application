@@ -31,4 +31,6 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('route/{id}/delete', 'RouteController@destroy');
     Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
 
+    Route::get('announcement', 'AnnouncementController@index')->name('announcement');
+    Route::get('annoucement/datatables.data', 'AnnouncementController@anyData')->name('announcement_datatables.data');
 });
