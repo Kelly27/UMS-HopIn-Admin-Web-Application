@@ -26,7 +26,7 @@
                     <td>{{$route->id}}</td>
                     <td>{{$route->title}}</td>
                     <td>{{$route->description}}</td>
-                    <td></td>
+                    <td><a href="{{URL::to('route/'. $route->id . '/edit')}}" class="action"><i class="material-icons">mode_edit</i></a><a href="#" class="action"><i class="material-icons">delete</i></a></td>
                 </tr>
                 @endforeach
             </tbody>

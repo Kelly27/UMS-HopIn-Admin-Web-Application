@@ -23,6 +23,14 @@
   border-bottom: 1px solid #abb1b8;
 }
 
+.routeManagerPage .action {
+  color: #666666;
+}
+
+.routeManagerPage .action:hover {
+  color: #949292;
+}
+
 .createRoutePage h3,
 .createRoutePage h5 {
   color: #000;

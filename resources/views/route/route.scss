@@ -19,6 +19,12 @@
             }
         }
     }
+    .action{
+        color: #666666;
+        &:hover{
+            color: #949292;
+        }
+    }
 }
 
 .createRoutePage{

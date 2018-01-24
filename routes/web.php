@@ -27,5 +27,6 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('route', 'RouteController@index')->name('route');
     Route::get('route/create', 'RouteController@create')->name('createRoute');
     Route::post('route/store', 'RouteController@store')->name('storeRoute');
-    
+    Route::get('route/{id}/edit', 'RouteController@edit');
+
 });

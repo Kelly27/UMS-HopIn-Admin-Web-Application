@@ -12,6 +12,9 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public $bus_stop_arr = ['FKJ','FSSA', 'FKI', 'FKSW', 'FSMP'];
+
     public function index()
     {
         // $result = \Guzzle::get('https://umsbus2017.000webhostapp.com/announcement.json');
@@ -30,7 +33,7 @@ class RouteController extends Controller
      */
     public function create()
     {
-        return view('route.create', ['new_id' => Route::count() + 1]);
+        return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
     }
 
     /**
@@ -42,6 +45,17 @@ class RouteController extends Controller
     public function store(Request $request)
     {
         $route = new Route;
+        $this->validate($request, [
+            'route_name' => 'required',
+            'route_desc' => 'required',
+            'bus_stop' => 'required',
+            'route_arr' => 'required',
+        ],[
+            'route_name.required' => 'The field \'ROUTE NAME\' is required.',
+            'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
+            'bus_stop.required' => 'The field \'BUS STOP THAT INVOLVED\' is required.',
+            'route_arr.required' => 'The field \'ROUTE\' is required.'
+        ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
         $route->bus_stops = json_encode($request->input('bus_stop'));
@@ -68,9 +82,17 @@ class RouteController extends Controller
      * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function edit(Route $route)
+    public function edit(Request $request, $id)
     {
-        //
+        $route = Route::where('id', $id)->first();
+        return view('route.create', [
+            'id' => $route->id,
+            'route_name' => $route->title,
+            'route_desc' => $route->description,
+            'bus_stop' => json_decode($route->bus_stops),
+            'route_arr' => $route->route_arr,
+            'bus_stop_arr' => $this->bus_stop_arr
+        ]);
     }
 
     /**

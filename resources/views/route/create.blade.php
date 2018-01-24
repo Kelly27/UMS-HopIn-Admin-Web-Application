@@ -21,31 +21,49 @@
         </div>
         <div class="inputForm">
             <div class="row">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="col-sm-7">
                     <h5>ID</h5>
                     <div id="ID_input">
-                        {{Form::text('id', $new_id, ['disabled' => 'disabled'] )}}
+                        {{Form::text('id', $id, ['disabled' => 'disabled'] )}}
                     </div>
                     <div class="route_name">
                         <h5>Route Name</h5>
-                        {{Form::text('route_name' )}}
+                        @if(isset($route_name))
+                            {{Form::text('route_name', $route_name)}}
+                        @else
+                            {{Form::text('route_name')}}
+                        @endif
                     </div>
                     <div class="route_desc">
                         <h5>Route Description</h5>
-                        {{Form::textarea('route_desc' )}}
+                        @if(isset($route_desc))
+                            {{Form::textarea('route_desc', $route_desc)}}
+                        @else
+                            {{Form::textarea('route_desc' )}}
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <h5>Bus Stop that involved</h5>
                     <div class="bus_stop_input">
-                        {{Form::checkbox('bus_stop[]', 'FSSA')}} {{Form::label('FSSA', 'FSSA')}} 
-                        <br>
-                        {{Form::checkbox('bus_stop[]', 'FKJ')}} {{Form::label('FKJ', 'FKJ')}}
-                        <br>
-                        {{Form::checkbox('bus_stop[]', 'FKSW')}} {{Form::label('FKSW', 'FKSW')}} 
-                        <br>
-                        {{Form::checkbox('bus_stop[]', 'FKI')}} {{Form::label('FKI', 'FKI')}}
-                        <br>
+                        @foreach($bus_stop_arr as $option)
+                            @if(in_array($option, $bus_stop))
+                                {{Form::checkbox('bus_stop[]', $option, true)}} {{Form::label($option, $option)}}
+                                <br>
+                            @else
+                                {{Form::checkbox('bus_stop[]', $option)}} {{Form::label($option, $option)}}
+                                <br>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
