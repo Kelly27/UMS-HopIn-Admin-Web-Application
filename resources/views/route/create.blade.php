@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="createRoutePage container-fluid contentPage">
+    <div class="createRoutePage createPage container-fluid contentPage">
         <div class="row">
             <div class="col-sm-10">
                 <h3>Create Route's Profile</h3>

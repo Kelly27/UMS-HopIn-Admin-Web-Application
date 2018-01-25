@@ -43095,7 +43095,7 @@ if (false) {
 /* 47 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \r\n}\r\n^\r\n      Invalid CSS after \"}\": expected \"}\", was \"\"\r\n      in D:\\wamp64\\www\\UMSbustrack_web\\resources\\views\\announcement\\announcement.scss (line 34, column 1)\n    at runLoaders (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\sass-loader\\lib\\loader.js:55:13)\n    at Object.<anonymous> (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\async\\dist\\async.js:2257:31)\n    at Object.callback (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\async\\dist\\async.js:958:16)\n    at options.error (D:\\wamp64\\www\\UMSbustrack_web\\node_modules\\node-sass\\lib\\index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

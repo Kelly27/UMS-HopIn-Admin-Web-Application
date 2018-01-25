@@ -1,12 +1,15 @@
+@import '../layouts/createPage';
 .routeManagerPage{
     table{
-        width: 90%;
+        width: 100%;
         margin-top: 20px;
         border: none !important;
         thead{
-            
             td{
                 border: none !important;
+                &:last-child{
+                    text-align: center;
+                }
             }
         }
         tbody{
@@ -19,6 +22,9 @@
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
+                &:last-child{
+                    text-align: center;
+                }
             }
         }
     }
@@ -43,19 +49,6 @@
     background-color: blue !important;
 }
 .createRoutePage{
-    h3, h5{
-        color: #000;
-        font-weight: 300;
-    }
-    h5{
-        text-transform: uppercase;
-        margin-bottom: 5px;
-    }
-    input, textarea{
-        border-radius: 5px;
-        border: 2px solid #cccccc;
-        padding: 5px 10px;
-    }
     .route_name, .route_desc{
         input{
             width: 100%;

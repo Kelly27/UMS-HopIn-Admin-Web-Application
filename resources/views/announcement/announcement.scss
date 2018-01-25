@@ -1,11 +1,16 @@
+@import '../layouts/createPage';
+
 .AnnouncementManagerPage{
     table{
-        width: 90%;
+        width: 100%;
         margin-top: 20px;
         border: none !important;
         thead{
             td{
                 border: none !important;
+                &:last-child{
+                    text-align: center;
+                }
             }
         }
         tbody{
@@ -14,6 +19,10 @@
             td{
                 border: none !important;
                 border-bottom: 1px solid #abb1b8 !important;
+                &:last-child{
+                    text-align: center;
+                }
+            }
         }
     }
     .action{
@@ -30,5 +39,11 @@
         .current{
             background-color: blue !important;
         }
+    }
+}
+
+.createAnnoucementPage{
+    input{
+        width: 100%;
     }
 }

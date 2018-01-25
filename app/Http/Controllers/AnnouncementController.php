@@ -15,8 +15,9 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::orderBy('created_at', 'DESC')->get();
-        return view('announcement.index', ['announcements' => $announcements]);
+        $announcement = Announcement::orderBy('created_at', 'desc')->first();
+        $newID = $announcement->id + 1;
+        return view('announcement.index', ['id' => $newID]);
     }
 
     //datatable purpose
@@ -24,6 +25,9 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::query();
         return Datatables::of($announcements)
+            ->order(function($query){
+                $query->orderBy('created_at', 'DESC');
+            })
             ->addColumn('action', function($announcement){
                 return '<a href="announcement/' . $announcement->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="announcement/' . $announcement->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -34,9 +38,9 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('announcement.create');
     }
 
     /**
@@ -45,9 +49,23 @@ class AnnouncementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
-        //
+        $announce = new Announcement;
+
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required'
+        ],[
+            'title' => 'The field \'Title\' is required',
+            'content' => 'The field \'Content\' is required'
+        ]);
+
+        $announce->title = $request->input('title');
+        $announce->content = $request->input('content');
+        $announce->save();
+
+        return redirect('announcement');
     }
 
     /**
@@ -67,9 +85,13 @@ class AnnouncementController extends Controller
      * @param  \App\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Announcement $announcement)
+    public function edit($id, Announcement $announcement)
     {
-        //
+        $announce = Announcement::find($id);
+        return view('announcement.create', [
+            'title' => $announce->title,
+            'content' => $announce->content
+        ]);
     }
 
     /**
@@ -79,9 +101,22 @@ class AnnouncementController extends Controller
      * @param  \App\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update($id, Request $request, Announcement $announcement)
     {
-        //
+        $announce = Announcement::find($id);
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required'
+        ],[
+            'title' => 'The field \'Title\' is required',
+            'content' => 'The field \'Content\' is required'
+        ]);
+
+        $announce->title = $request->input('title');
+        $announce->content = $request->input('content');
+        $announce->save();
+
+        return redirect('announcement');
     }
 
     /**
@@ -90,8 +125,10 @@ class AnnouncementController extends Controller
      * @param  \App\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $announcement)
+    public function destroy($id, Announcement $announcement)
     {
-        //
+        Announcement::destroy($id);
+        return redirect('announcement')->with('message', 'Announcement has been deleted succesfully');
+
     }
 }

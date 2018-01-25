@@ -25,12 +25,17 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('announcement', 'AnnouncementController@index')->name('announcement');
 
     Route::get('route', 'RouteController@index')->name('route');
+    Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
     Route::get('route/create', 'RouteController@create')->name('createRoute');
     Route::post('route/store', 'RouteController@store')->name('storeRoute');
     Route::get('route/{id}/edit', 'RouteController@edit');
     Route::get('route/{id}/delete', 'RouteController@destroy');
-    Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
 
     Route::get('announcement', 'AnnouncementController@index')->name('announcement');
     Route::get('annoucement/datatables.data', 'AnnouncementController@anyData')->name('announcement_datatables.data');
+    Route::get('annoucement/{id}/create', 'AnnouncementController@create')->name('createAnnouncement');
+    Route::post('annoucement/{id}/store', 'AnnouncementController@store')->name('storeAnnouncement');
+    Route::get('announcement/{id}/edit', 'AnnouncementController@edit');
+    Route::post('announcement/{id}/update', 'AnnouncementController@update')->name('updateAnnouncement');
+    Route::get('announcement/{id}/delete', 'AnnouncementController@destroy');
 });

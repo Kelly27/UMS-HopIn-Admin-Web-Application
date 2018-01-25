@@ -10,15 +10,16 @@
 
 @section('content')
     <div class="AnnouncementManagerPage container-fluid contentPage">
-        {{-- <a href="{{route('createRoute')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a> --}}
+        <a href="{{route('createAnnouncement', ['id' => $id])}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
         <table class="table table-bordered" id="announcements-table">
         <thead style = "background-color: #0379be; color: white;">
             <tr>
-                <td width="30%">Announcement Title</td>
+                <td width="25%">Announcement Title</td>
                 <td>Announcement Content</td>
+                <td width="13%">Created On</td>
                 <td width="10%">Action</td>
             </tr>
         </thead>
@@ -54,12 +55,22 @@ $(function() {
         columns: [
             { data: 'title', name: 'title' },
             { data: 'content', name: 'content' },
+            { data: 'created_at', name: 'created_at'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{
             targets: 1,
+            {{--make data truncate multiline and removed image and horizontal line--}}
             render: function ( data, type, row ) {
-                return data.length > 100 ? data.substr( 0, 300 ) + '...' : data;
+                var d = $.parseHTML(data)[0].textContent; 
+                var mydata = d.replace(/<img.{0,50}>/g, '');
+                var mydata = mydata.replace('<hr>', '');
+                if (mydata.length > 200){
+                    return mydata.substr(0, 200) + '...';
+                }
+                else{
+                    return mydata;
+                }
             }
         },{
             targets: 0,
