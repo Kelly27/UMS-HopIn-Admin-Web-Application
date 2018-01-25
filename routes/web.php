@@ -48,4 +48,13 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('bus/{id}/edit', 'BusController@edit');
     Route::post('bus/{id}/update', 'BusController@update')->name('updateBus');
     Route::get('bus/{id}/delete', 'BusController@destroy');
+
+    //driver
+    Route::get('driver', 'DriverController@index')->name('driver');
+    Route::get('driver/datatables.data', 'DriverController@anyData')->name('driver_datatables.data');
+    Route::get('driver/create', 'DriverController@create')->name('createDriver');
+    Route::post('driver/{id}/store', 'DriverController@store')->name('storeDriver');
+    Route::get('driver/{id}/edit', 'DriverController@edit');
+    Route::post('driver/{id}/update', 'DriverController@update')->name('updateDriver');
+    Route::get('driver/{id}/delete', 'DriverController@destroy');
 });

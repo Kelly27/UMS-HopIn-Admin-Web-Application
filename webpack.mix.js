@@ -23,4 +23,5 @@ mix.sass('resources/views/auth/login.scss', 'public/css')
     .sass('resources/views/dashboard/dashboard.scss', 'public/css')
     .sass('resources/views/route/route.scss', 'public/css')
     .sass('resources/views/announcement/announcement.scss', 'public/css')
-    .sass('resources/views/bus/bus.scss', 'public/css');
+    .sass('resources/views/bus/bus.scss', 'public/css')
+    .sass('resources/views/driver/driver.scss', 'public/css');

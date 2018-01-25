@@ -13,6 +13,12 @@
   font-weight: 300;
 }
 
+.createPage h4 {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .createPage input,
 .createPage textarea {
   border-radius: 5px;

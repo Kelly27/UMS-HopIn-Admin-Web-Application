@@ -14,7 +14,7 @@
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
-        <table class="table table-bordered" id="announcements-table">
+        <table class="table table-bordered" id="bus-table">
         <thead style = "background-color: #0379be; color: white;">
             <tr>
                 <td>Bus Number</td>
@@ -48,7 +48,7 @@ $(document).ajaxError(function(event, jqxhr, settings, exception) {
 }); --}}
 
 $(function() {
-    $('#announcements-table').DataTable({
+    $('#bus-table').DataTable({
         processing: true,
         serverSide: true,
         fixedHeader: true,
