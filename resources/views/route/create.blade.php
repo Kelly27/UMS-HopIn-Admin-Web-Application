@@ -14,7 +14,15 @@
             <div class="col-sm-10">
                 <h3>Create Route's Profile</h3>
             </div>
-            {{ Form::open(['url' => route('storeRoute'), 'method' => 'post']) }}
+            @php
+            if(Request::segment(3) == 'edit'){
+                $url = 'updateRoute';
+            }
+            else if(Request::segment(3) == 'create'){
+                $url = 'storeRoute';
+            }
+            @endphp
+            {{ Form::open(['url' => route($url, ['id' => Request::segment(2)]), 'method' => 'post']) }}
             <div class="col-sm-2" style="padding-top: 20px;">
                 <a href="#"><button class="btn basic-btn submit-btn">Submit</button></a>
             </div>

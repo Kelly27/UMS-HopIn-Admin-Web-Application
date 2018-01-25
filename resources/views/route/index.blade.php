@@ -10,16 +10,16 @@
 
 @section('content')
     <div class="routeManagerPage container-fluid contentPage">
-        <a href="{{route('createRoute')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
+        <a href="{{route('createRoute', ['id' => $id])}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
         <table class="table table-bordered" id="routes-table">
         <thead style = "background-color: #0379be; color: white;">
             <tr>
-                <td>Route Name</td>
+                <td width="25%">Route Name</td>
                 <td>Route Description</td>
-                <td>Action</td>
+                <td width="10%">Action</td>
             </tr>
         </thead>
     </table>
@@ -59,7 +59,7 @@ $(function() {
         columnDefs: [{
             targets: 1,
             render: function ( data, type, row ) {
-                return data.length > 100 ? data.substr( 0, 300 ) + '...' : data;
+                return data.length > 200 ? data.substr( 0, 200 ) + '...' : data;
             }
         },{
             targets: 0,

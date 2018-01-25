@@ -26,9 +26,10 @@ Route::group(['middleware' => ['web','auth']], function () {
 
     Route::get('route', 'RouteController@index')->name('route');
     Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
-    Route::get('route/create', 'RouteController@create')->name('createRoute');
-    Route::post('route/store', 'RouteController@store')->name('storeRoute');
+    Route::get('route/{id}/create', 'RouteController@create')->name('createRoute');
+    Route::post('route/{id}/store', 'RouteController@store')->name('storeRoute');
     Route::get('route/{id}/edit', 'RouteController@edit');
+    Route::post('route/{id}/update', 'RouteController@update')->name('updateRoute');
     Route::get('route/{id}/delete', 'RouteController@destroy');
 
     Route::get('announcement', 'AnnouncementController@index')->name('announcement');

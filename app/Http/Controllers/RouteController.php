@@ -25,7 +25,9 @@ class RouteController extends Controller
         $fp = fopen('route.json', 'w');
         fwrite($fp, json_encode($routes));
         fclose($fp);
-        return view('route.index', ['routes' => $routes]);
+        $lastRoute = Route::orderBy('created_at', 'DESC')->first();
+        $newID = $lastRoute->id + 1;
+        return view('route.index', ['routes' => $routes, 'id' => $newID]);
     }
 
     //datatable purpose
@@ -33,6 +35,9 @@ class RouteController extends Controller
     {
         $routes = Route::query();
         return Datatables::of($routes)
+            ->order(function($query){
+                $query->orderBy('created_at', 'DESC');
+            })
             ->addColumn('action', function($route){
                 return '<a href="route/' . $route->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="route/' . $route->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -43,7 +48,7 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         // return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
         return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr]);
@@ -55,7 +60,7 @@ class RouteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
         $route = new Route;
         $this->validate($request, [
@@ -115,9 +120,28 @@ class RouteController extends Controller
      * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Route $route)
+    public function update($id, Request $request, Route $route)
     {
-        //
+        $route = Route::find($id);
+
+        $this->validate($request, [
+            'route_name' => 'required',
+            'route_desc' => 'required',
+            'bus_stop' => 'required',
+            'route_arr' => 'required',
+        ],[
+            'route_name.required' => 'The field \'ROUTE NAME\' is required.',
+            'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
+            'bus_stop.required' => 'The field \'BUS STOP THAT INVOLVED\' is required.',
+            'route_arr.required' => 'The field \'ROUTE\' is required.'
+        ]);
+        $route->title = $request->input('route_name');
+        $route->description = $request->input('route_desc');
+        $route->bus_stops = json_encode($request->input('bus_stop'));
+        $route->route_arr = $request->input('route_arr');
+        $route->save();
+
+        return redirect('route');
     }
 
     /**
