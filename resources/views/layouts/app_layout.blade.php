@@ -28,7 +28,7 @@
             </ul>
          </li> --}}
          <li><a href="{{route('announcement')}}"><i class="menu-i material-icons">announcement</i>Announcement Manager</a></li>
-         <li><a href="#"><i class="menu-i material-icons">directions_bus</i>Bus Manager</a></li>
+         <li><a href="{{route('bus')}}"><i class="menu-i material-icons">directions_bus</i>Bus Manager</a></li>
          <li><a href="#"><i class="menu-i material-icons">people</i>Driver Manager</a></li>
          <li><a href="#"><i class="menu-i material-icons">store_mall_directory</i>Bus Stop Manager</a></li>
          <li><a href="#"><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</a></li>

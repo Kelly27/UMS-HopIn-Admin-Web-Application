@@ -65,7 +65,7 @@ class AnnouncementController extends Controller
         $announce->content = $request->input('content');
         $announce->save();
 
-        return redirect('announcement');
+        return redirect('announcement')->with('message', 'Announcement has created succesfully.');
     }
 
     /**
@@ -116,7 +116,7 @@ class AnnouncementController extends Controller
         $announce->content = $request->input('content');
         $announce->save();
 
-        return redirect('announcement');
+        return redirect('announcement')->with('message', 'Announcement has updated succesfully.');
     }
 
     /**
@@ -128,7 +128,7 @@ class AnnouncementController extends Controller
     public function destroy($id, Announcement $announcement)
     {
         Announcement::destroy($id);
-        return redirect('announcement')->with('message', 'Announcement has been deleted succesfully');
+        return redirect('announcement')->with('message', 'Announcement has been deleted succesfully.');
 
     }
 }

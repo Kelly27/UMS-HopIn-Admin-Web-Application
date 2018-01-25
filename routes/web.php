@@ -22,8 +22,7 @@ Route::group(['middleware' => ['web','auth']], function () {
 
     Route::get('home', 'HomeController@index')->name('home');
 
-    Route::get('announcement', 'AnnouncementController@index')->name('announcement');
-
+    //Route
     Route::get('route', 'RouteController@index')->name('route');
     Route::get('route/datatables.data', 'RouteController@anyData')->name('route_datatables.data');
     Route::get('route/{id}/create', 'RouteController@create')->name('createRoute');
@@ -32,6 +31,7 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::post('route/{id}/update', 'RouteController@update')->name('updateRoute');
     Route::get('route/{id}/delete', 'RouteController@destroy');
 
+    //Announcement
     Route::get('announcement', 'AnnouncementController@index')->name('announcement');
     Route::get('annoucement/datatables.data', 'AnnouncementController@anyData')->name('announcement_datatables.data');
     Route::get('annoucement/{id}/create', 'AnnouncementController@create')->name('createAnnouncement');
@@ -39,4 +39,13 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('announcement/{id}/edit', 'AnnouncementController@edit');
     Route::post('announcement/{id}/update', 'AnnouncementController@update')->name('updateAnnouncement');
     Route::get('announcement/{id}/delete', 'AnnouncementController@destroy');
+
+    //Bus
+    Route::get('bus', 'BusController@index')->name('bus');
+    Route::get('bus/datatables.data', 'BusController@anyData')->name('bus_datatables.data');
+    Route::get('bus/create', 'BusController@create')->name('createBus');
+    Route::post('bus/{id}/store', 'BusController@store')->name('storeBus');
+    Route::get('bus/{id}/edit', 'BusController@edit');
+    Route::post('bus/{id}/update', 'BusController@update')->name('updateBus');
+    Route::get('bus/{id}/delete', 'BusController@destroy');
 });

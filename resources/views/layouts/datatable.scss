@@ -1,0 +1,32 @@
+.datatable{
+    table{
+        width: 100%;
+        margin-top: 20px;
+        border: none !important;
+        thead{
+            td{
+                border: none !important;
+                &:last-child{
+                    text-align: center;
+                }
+            }
+        }
+        tbody{
+            background-color: white;
+            color: black;
+            td{
+                border: none !important;
+                border-bottom: 1px solid #abb1b8 !important;
+                &:last-child{
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .action{
+        color: #666666;
+        &:hover{
+            color: #949292;
+        }
+    }
+}
