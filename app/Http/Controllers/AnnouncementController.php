@@ -15,9 +15,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcement = Announcement::orderBy('created_at', 'desc')->first();
-        $newID = $announcement->id + 1;
-        return view('announcement.index', ['id' => $newID]);
+        return view('announcement.index');
     }
 
     //datatable purpose
@@ -38,7 +36,7 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         return view('announcement.create');
     }

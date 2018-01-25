@@ -25,9 +25,7 @@ class RouteController extends Controller
         $fp = fopen('route.json', 'w');
         fwrite($fp, json_encode($routes));
         fclose($fp);
-        $lastRoute = Route::orderBy('created_at', 'DESC')->first();
-        $newID = $lastRoute->id + 1;
-        return view('route.index', ['routes' => $routes, 'id' => $newID]);
+        return view('route.index', ['routes' => $routes]);
     }
 
     //datatable purpose
@@ -48,7 +46,7 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         // return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
         return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr]);

@@ -15,7 +15,7 @@ class BusController extends Controller
      */
     public function index()
     {
-        return view('bus.index', ['id' => 1]);
+        return view('bus.index');
     }
 
     //datatable purpose

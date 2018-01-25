@@ -15,10 +15,10 @@
                 <h3>Create Announcement</h3>
             </div>
             @php
-            if(Request::segment(3) == 'edit'){
+            if(collect(request()->segments())->last() == 'edit'){
                 $url = 'updateAnnouncement';
             }
-            else if(Request::segment(3) == 'create'){
+            else if(collect(request()->segments())->last() == 'create'){
                 $url = 'storeAnnouncement';
             }
 

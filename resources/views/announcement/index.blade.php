@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="AnnouncementManagerPage container-fluid contentPage">
-        <a href="{{route('createAnnouncement', ['id' => $id])}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
+        <a href="{{route('createAnnouncement')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
