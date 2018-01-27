@@ -1,25 +1,26 @@
 @extends('layouts.app_layout')
 
 @section('title')
-<i class="menu-i material-icons">announcement</i><b style="font-size: large;">Announcement Manager</b>
+<i class="menu-i material-icons">store_mall_directory</i><b style="font-size: large;">Bus Stop Manager</b>
 @endsection
 
 @section('content_style')
-<link rel="stylesheet" type="text/css" href="{{asset('css/announcement.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/bus_stop.css')}}">
 @endsection
 
 @section('content')
-    <div class="AnnouncementManagerPage container-fluid contentPage">
-        <a href="{{route('createAnnouncement')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
+    <div class="BusStopManagerPage datatable container-fluid contentPage">
+        <a href="{{route('createBusStop')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
-        <table class="table table-bordered" id="announcements-table">
+        <table class="table table-bordered" id="bus-table">
         <thead style = "background-color: #0379be; color: white;">
             <tr>
-                <td width="25%">Announcement Title</td>
-                <td>Announcement Content</td>
-                <td width="13%">Created On</td>
+                <td width="25%">Stop Name</td>
+                <td>Details</td>
+                <td width="10%">Latitude</td>
+                <td width="10%">Longitude</td>
                 <td width="10%">Action</td>
             </tr>
         </thead>
@@ -47,15 +48,16 @@ $(document).ajaxError(function(event, jqxhr, settings, exception) {
 }); --}}
 
 $(function() {
-    $('#announcements-table').DataTable({
+    $('#bus-table').DataTable({
         processing: true,
         serverSide: true,
         fixedHeader: true,
-        ajax: '{!! route('announcement_datatables.data') !!}',
+        ajax: '{!! route('bus_stop_datatables.data') !!}',
         columns: [
-            { data: 'title', name: 'title' },
-            { data: 'content', name: 'content' },
-            { data: 'created_at', name: 'created_at'},
+            { data: 'name', name: 'name' },
+            { data: 'description', name: 'description' },
+            { data: 'location.lat', name: 'location.lat'},
+            { data: 'location.lng', name: 'lng.longitude'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{
@@ -78,7 +80,6 @@ $(function() {
                 return data.length > 50 ? data.substr( 0, 50 ) + '...' : data;
             }
         }],
-        "order": [2, 'desc']
     });
 });
 </script>

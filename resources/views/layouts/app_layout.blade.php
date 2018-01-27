@@ -16,8 +16,8 @@
 
       <!-- Sidebar Links -->
       <ul class="list-unstyled components">
-         <li class="<?php if (Request::segment(1) == "home") {echo "active";} ?>"><a href={{route('home')}}><i class="menu-i material-icons">home</i>Dashboard</a></li>
-         <li class="<?php if (Request::segment(1) == "route") {echo "active";} ?>"><a href="{{route("route")}}"><i class="menu-i material-icons">directions</i>Route Manager</a></li>
+         <a class="<?php if (Request::segment(1) == "home") {echo "active";} ?>" href={{route('home')}}><li><i class="menu-i material-icons">home</i>Dashboard</li></a>
+         <a class="<?php if (Request::segment(1) == "route") {echo "active";} ?>" href="{{route("route")}}"><li><i class="menu-i material-icons">directions</i>Route Manager</li></a>
 
          {{-- <li><!-- Link with dropdown items -->
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"> </a>
@@ -27,12 +27,12 @@
                <li><a href="#">Page</a></li>
             </ul>
          </li> --}}
-         <li><a href="{{route('announcement')}}"><i class="menu-i material-icons">announcement</i>Announcement Manager</a></li>
-         <li><a href="{{route('bus')}}"><i class="menu-i material-icons">directions_bus</i>Bus Manager</a></li>
-         <li><a href="{{route('driver')}}"><i class="menu-i material-icons">people</i>Driver Manager</a></li>
-         <li><a href="#"><i class="menu-i material-icons">store_mall_directory</i>Bus Stop Manager</a></li>
-         <li><a href="#"><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</a></li>
-         <li><a href="#"><i class="menu-i material-icons">assignment</i>Report Manager</a></li>
+         <a class="<?php if (Request::segment(1) == "announcement") {echo "active";} ?>" href="{{route('announcement')}}"><li><i class="menu-i material-icons">announcement</i>Announcement Manager</li></a>
+         <a class="<?php if (Request::segment(1) == "bus") {echo "active";} ?>" href="{{route('bus')}}"><li><i class="menu-i material-icons">directions_bus</i>Bus Manager</li></a>
+         <a class="<?php if (Request::segment(1) == "driver") {echo "active";} ?>" href="{{route('driver')}}"><li><i class="menu-i material-icons">people</i>Driver Manager</li></a>
+         <a class="<?php if (Request::segment(1) == "bus_stop") {echo "active";} ?>" href="{{route('bus_stop')}}"><li><i class="menu-i material-icons">store_mall_directory</i>Bus Stop Manager</li></a>
+         <a href="#"><li><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</li></a>
+         <a href="#"><li><i class="menu-i material-icons">assignment</i>Report Manager</li></a>
       </ul>
    </nav>
    <div id="content">

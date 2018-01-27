@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Driver;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Hash;
 
 class DriverController extends Controller
 {
@@ -21,12 +22,9 @@ class DriverController extends Controller
     //datatable purpose
     public function anyData()
     {
-        $drivers = Driver::query();
+        $drivers = Driver::query()->orderBy('created_at', 'desc');
 
         return Datatables::of($drivers)
-            ->order(function($query){
-                $query->orderBy('created_at', 'DESC');
-            })
             ->addColumn('action', function($driver){
                 return '<a href="driver/' . $driver->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="driver/' . $driver->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -64,7 +62,7 @@ class DriverController extends Controller
         $driver->ic_number = $request->input('ic_number');
         $driver->staff_number = $request->input('staff_number');
         $driver->staff_number = $request->input('staff_number');
-        $driver->password = $request->input('password');
+        $driver->password = Hash::make($request->input('password'));
         $driver->save();
 
         return redirect('driver')->with('message', 'Driver\'s profile has created succesfully.');
@@ -122,7 +120,7 @@ class DriverController extends Controller
         $driver->ic_number = $request->input('ic_number');
         $driver->staff_number = $request->input('staff_number');
         $driver->staff_number = $request->input('staff_number');
-        $driver->password = $request->input('password');
+        $driver->password = Hash::make($request->input('password'));
         $driver->save();
 
         return redirect('driver')->with('message', 'Driver\'s profile has updated succesfully.');
@@ -137,6 +135,6 @@ class DriverController extends Controller
     public function destroy($id, Driver $driver)
     {
         $driver = Driver::find($id);
-        return redirect('driver')->with('message', 'Driver\'s has been deleted succesfully');
+        return redirect('driver')->with('message', 'Driver\'s has deleted succesfully');
     }
 }

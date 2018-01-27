@@ -31,11 +31,8 @@ class RouteController extends Controller
     //datatable purpose
     public function anyData()
     {
-        $routes = Route::query();
+        $routes = Route::query()->orderBy('created_at', 'desc');
         return Datatables::of($routes)
-            ->order(function($query){
-                $query->orderBy('created_at', 'DESC');
-            })
             ->addColumn('action', function($route){
                 return '<a href="route/' . $route->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="route/' . $route->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -78,7 +75,7 @@ class RouteController extends Controller
         $route->route_arr = $request->input('route_arr');
         $route->save();
 
-        return redirect('route');
+        return redirect('route')->with('message', 'Route profile has created succesfully');
     }
 
     /**
@@ -139,7 +136,7 @@ class RouteController extends Controller
         $route->route_arr = $request->input('route_arr');
         $route->save();
 
-        return redirect('route');
+        return redirect('route')->with('message', 'Route profile has updated succesfully');
     }
 
     /**

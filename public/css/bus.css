@@ -55,11 +55,18 @@
   font-weight: 700;
 }
 
-.createPage input,
-.createPage textarea {
+.createPage input {
   border-radius: 5px;
   border: 2px solid #cccccc;
   padding: 5px 10px;
+}
+
+.createPage textarea {
+  border: none;
+}
+
+.submit-btn {
+  float: right;
 }
 
 .createBusPage input {

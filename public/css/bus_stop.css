@@ -69,7 +69,11 @@
   float: right;
 }
 
-.createDriverPage input {
+.createBusStopPage input {
   width: 100%;
+}
+
+.createBusStopPage .col-map {
+  margin-top: 5px;
 }
 

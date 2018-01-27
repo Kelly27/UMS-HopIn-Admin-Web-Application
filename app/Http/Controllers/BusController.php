@@ -21,12 +21,9 @@ class BusController extends Controller
     //datatable purpose
     public function anyData()
     {
-        $buses = Bus::query();
+        $buses = Bus::query()->orderBy('created_at', 'desc');
 
         return Datatables::of($buses)
-            ->order(function($query){
-                $query->orderBy('created_at', 'DESC');
-            })
             ->addColumn('action', function($bus){
                 return '<a href="bus/' . $bus->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="bus/' . $bus->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -122,7 +119,7 @@ class BusController extends Controller
         $bus->year_manufactured = $request->input('year_manufactured');
         $bus->save();
 
-        return redirect('bus')->with('message', 'Bus profile has been updated successfully.');
+        return redirect('bus')->with('message', 'Bus profile has updated successfully.');
     }
 
     /**
@@ -133,6 +130,8 @@ class BusController extends Controller
      */
     public function destroy($id, Bus $bus)
     {
-        //
+        $bus = Bus::find($id);
+
+        return redirect('bus')->with('message', 'Bus profile has deleted successfully.');
     }
 }

@@ -15,9 +15,16 @@
         text-transform: uppercase;
         font-weight: 700;
     }
-    input, textarea{
+    input{
         border-radius: 5px;
         border: 2px solid #cccccc;
         padding: 5px 10px;
     }
+    textarea{
+        border: none;
+    }
+}
+
+.submit-btn{
+   float: right;
 }

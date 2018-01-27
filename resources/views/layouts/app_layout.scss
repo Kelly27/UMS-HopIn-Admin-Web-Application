@@ -93,20 +93,30 @@ a[aria-expanded="true"]::before {
    margin-top: 30px;
    font-weight: 500;
    font-size: 16px;
-   & > li{
-      padding: 3px 5px 0px 20px;
-   }
-   & > li > a{
-      color: #82d0ff !important;
+   & > a{
       text-decoration: none;
+      outline: none;
+      & > li{
+         padding: 3px 5px 3px 20px;
+         color: #82d0ff !important;
+         text-decoration: none;
+         &:hover{
+            background: #565656;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+         }
+      }
    }
-   & > .active {
-      background: #22aed1;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      margin-top: 3px;
+   .active {
       & > *{
          color: #10505f !important;
+      }
+      & > li{
+         background: #22aed1;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+         padding-top: 0px;
+         &:hover{
+            background: #22aed1;
+         }
       }
    }
 }
@@ -130,7 +140,7 @@ a[aria-expanded="true"]::before {
    border: none;
    box-shadow: 1px 2px 4px 0px #4a4a4a;
    color: white !important;
-   
+   text-transform: uppercase;
 }
 
 .inputForm{
@@ -140,10 +150,6 @@ a[aria-expanded="true"]::before {
    border-radius: 20px;
    background-color: white;
 
-}
-
-.submit-btn{
-   float: right;
 }
 
 @media (max-width: 768px) {

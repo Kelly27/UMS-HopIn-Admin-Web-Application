@@ -21,11 +21,8 @@ class AnnouncementController extends Controller
     //datatable purpose
     public function anyData()
     {
-        $announcements = Announcement::query();
+        $announcements = Announcement::query()->orderBy('created_at', 'desc');
         return Datatables::of($announcements)
-            ->order(function($query){
-                $query->orderBy('created_at', 'DESC');
-            })
             ->addColumn('action', function($announcement){
                 return '<a href="announcement/' . $announcement->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="announcement/' . $announcement->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
@@ -126,7 +123,7 @@ class AnnouncementController extends Controller
     public function destroy($id, Announcement $announcement)
     {
         Announcement::destroy($id);
-        return redirect('announcement')->with('message', 'Announcement has been deleted succesfully.');
+        return redirect('announcement')->with('message', 'Announcement has deleted succesfully.');
 
     }
 }

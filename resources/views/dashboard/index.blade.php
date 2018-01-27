@@ -8,8 +8,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
 @endsection
 
-@section('content')
+@push('content')
     <div class="dashboardPage container">
         Welcome, {{$user}}!
     </div>
-@endsection
+@endpush

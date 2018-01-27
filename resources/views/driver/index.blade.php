@@ -26,7 +26,7 @@
     </div>
 @endsection
 
-@section('script')
+@push('script')
 <script>
 $(function() {
     $('#driver-table').DataTable({
@@ -42,4 +42,4 @@ $(function() {
     });
 });
 </script>
-@endsection
+@endpush

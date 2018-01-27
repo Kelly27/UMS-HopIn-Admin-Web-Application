@@ -1,0 +1,15 @@
+@import '../layouts/datatable';
+@import '../layouts/createPage';
+
+.BusStopManagerPage{
+
+}
+
+.createBusStopPage{
+    input{
+        width: 100%;
+    }
+    .col-map{
+        margin-top: 5px;
+    }
+}

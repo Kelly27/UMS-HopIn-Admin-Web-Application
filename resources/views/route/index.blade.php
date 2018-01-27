@@ -26,7 +26,7 @@
     </div>
 @endsection
 
-@section('script')
+@push('script')
 <script>
 //ajax error occuring due to laravel datatable bug
 // disable datatables error prompt
@@ -70,4 +70,4 @@ $(function() {
     });
 });
 </script>
-@endsection
+@endpush

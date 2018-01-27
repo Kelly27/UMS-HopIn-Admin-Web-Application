@@ -49,7 +49,7 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::post('bus/{id}/update', 'BusController@update')->name('updateBus');
     Route::get('bus/{id}/delete', 'BusController@destroy');
 
-    //driver
+    //Driver
     Route::get('driver', 'DriverController@index')->name('driver');
     Route::get('driver/datatables.data', 'DriverController@anyData')->name('driver_datatables.data');
     Route::get('driver/create', 'DriverController@create')->name('createDriver');
@@ -57,4 +57,13 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('driver/{id}/edit', 'DriverController@edit');
     Route::post('driver/{id}/update', 'DriverController@update')->name('updateDriver');
     Route::get('driver/{id}/delete', 'DriverController@destroy');
+
+    //Bus Stop
+    Route::get('bus_stop', 'BusStopController@index')->name('bus_stop');
+    Route::get('bus_stop/datatables.data', 'BusStopController@anyData')->name('bus_stop_datatables.data');
+    Route::get('bus_stop/create', 'BusStopController@create')->name('createBusStop');
+    Route::post('bus_stop/{id}/store', 'BusStopController@store')->name('storeBusStop');
+    Route::get('bus_stop/{id}/edit', 'BusStopController@edit');
+    Route::post('bus_stop/{id}/update', 'BusStopController@update')->name('updateBusStop');
+    Route::get('bus_stop/{id}/delete', 'BusStopController@destroy');
 });
