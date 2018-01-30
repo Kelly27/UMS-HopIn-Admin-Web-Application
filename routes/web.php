@@ -66,4 +66,22 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('bus_stop/{id}/edit', 'BusStopController@edit');
     Route::post('bus_stop/{id}/update', 'BusStopController@update')->name('updateBusStop');
     Route::get('bus_stop/{id}/delete', 'BusStopController@destroy');
+
+    //Bus Reservation
+    Route::get('reservation', 'ReservationController@index')->name('reservation');
+    Route::get('reservation/datatables.data', 'ReservationController@anyData')->name('reservation_datatables.data');
+    Route::get('reservation/create', 'ReservationController@create')->name('createReservation');
+    Route::post('reservation/{id}/store', 'ReservationController@store')->name('storeReservation');
+    Route::get('reservation/{id}/edit', 'ReservationController@edit');
+    Route::post('reservation/{id}/update', 'ReservationController@update')->name('updateReservation');
+    Route::get('reservation/{id}/delete', 'ReservationController@destroy');
+
+    //Report
+    Route::get('report', 'ReportController@index')->name('report');
+    Route::get('report/datatables.data', 'ReportController@anyData')->name('report_datatables.data');
+    Route::get('report/create', 'ReportController@create')->name('createReport');
+    Route::post('report/{id}/store', 'ReportController@store')->name('storeReport');
+    Route::get('report/{id}/edit', 'ReportController@edit');
+    Route::post('report/{id}/update', 'ReportController@update')->name('updateReport');
+    Route::get('report/{id}/delete', 'ReportController@destroy');
 });

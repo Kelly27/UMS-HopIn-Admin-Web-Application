@@ -25,4 +25,6 @@ mix.sass('resources/views/auth/login.scss', 'public/css')
     .sass('resources/views/announcement/announcement.scss', 'public/css')
     .sass('resources/views/bus/bus.scss', 'public/css')
     .sass('resources/views/driver/driver.scss', 'public/css')
-    .sass('resources/views/bus_stop/bus_stop.scss', 'public/css');
+    .sass('resources/views/bus_stop/bus_stop.scss', 'public/css')
+    .sass('resources/views/reservation/reservation.scss', 'public/css')
+    .sass('resources/views/report/report.scss', 'public/css');

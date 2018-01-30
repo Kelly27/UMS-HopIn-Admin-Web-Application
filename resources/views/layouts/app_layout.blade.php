@@ -31,8 +31,8 @@
          <a class="<?php if (Request::segment(1) == "bus") {echo "active";} ?>" href="{{route('bus')}}"><li><i class="menu-i material-icons">directions_bus</i>Bus Manager</li></a>
          <a class="<?php if (Request::segment(1) == "driver") {echo "active";} ?>" href="{{route('driver')}}"><li><i class="menu-i material-icons">people</i>Driver Manager</li></a>
          <a class="<?php if (Request::segment(1) == "bus_stop") {echo "active";} ?>" href="{{route('bus_stop')}}"><li><i class="menu-i material-icons">store_mall_directory</i>Bus Stop Manager</li></a>
-         <a href="#"><li><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</li></a>
-         <a href="#"><li><i class="menu-i material-icons">assignment</i>Report Manager</li></a>
+         <a class="<?php if (Request::segment(1) == "reservation") {echo "active";} ?>" href="{{route('reservation')}}"><li><i class="menu-i material-icons">settings_phone</i>Bus Reservation Manager</li></a>
+         <a class="<?php if (Request::segment(1) == "report") {echo "active";} ?>" href="{{route('report')}}"><li><i class="menu-i material-icons">assignment</i>Report Manager</li></a>
       </ul>
    </nav>
    <div id="content">

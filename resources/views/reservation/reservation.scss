@@ -1,0 +1,18 @@
+@import '../layouts/datatable';
+@import '../layouts/createPage';
+
+.ReservationManagerPage{
+}
+
+.createReservationPage{
+    input, textarea{
+        width: 100%;
+        color: #000;
+    }
+
+    textarea{
+        border-radius: 5px;
+        border: 2px solid #cccccc;
+        padding: 5px 10px;
+    }
+}
