@@ -31,6 +31,13 @@ class DriverController extends Controller
             ->make(true);
     }
 
+    //api
+    function json_data()
+    {
+        $drivers = Driver::orderBy('created_at', 'desc')->get();
+        return $drivers;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

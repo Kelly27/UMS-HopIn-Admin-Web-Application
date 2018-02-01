@@ -28,6 +28,14 @@ class AnnouncementController extends Controller
             })
             ->make(true);
     }
+
+    //provide data to android app
+    function json_data()
+    {
+        $announcements = Announcement::orderBy('created_at', 'desc')->get();
+        return $announcements;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

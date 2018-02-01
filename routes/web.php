@@ -14,6 +14,11 @@
 
 Auth::routes();
 
+Route::get('route/api', 'RouteController@json_data');
+Route::get('announcement/api', 'AnnouncementController@json_data');
+Route::get('driver/api', 'DriverController@json_data');
+Route::get('login_api', 'Controller@login');
+
 Route::group(['middleware' => ['web','auth']], function () {
 
     Route::get('/', function(){
