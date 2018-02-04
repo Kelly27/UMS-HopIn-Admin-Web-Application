@@ -1,4 +1,6 @@
-<!-- A lesson for JWTAuth -->
+<!-- A lesson for JWTAuth
+* need to setup unique key in the database
+ -->
 <?php
 
 namespace App\Http\Controllers;
