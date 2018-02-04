@@ -17,7 +17,17 @@ Auth::routes();
 Route::get('route/api', 'RouteController@json_data');
 Route::get('announcement/api', 'AnnouncementController@json_data');
 Route::get('driver/api', 'DriverController@json_data');
-Route::get('login_api', 'Controller@login');
+Route::get('test', function(){
+    return view('test');
+});
+
+Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
+    Route::get('driver_register', 'DriverAuthController@register');
+    Route::post('driver_login', 'DriverAuthController@login');
+    // Route::group(['middleware' => 'jwt.auth'], function(){
+    //     Route::post('get_user_details', 'DriverAuthController@get_user_details');
+    // });
+});
 
 Route::group(['middleware' => ['web','auth']], function () {
 

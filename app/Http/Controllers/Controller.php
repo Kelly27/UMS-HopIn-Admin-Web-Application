@@ -12,9 +12,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function login()
-    {
-        $users = User::all();
-        return $users;
-    }
 }

@@ -180,7 +180,8 @@ return [
 
         Kozz\Laravel\Providers\Guzzle::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
-
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
@@ -233,7 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Guzzle' => Kozz\Laravel\Facades\Guzzle::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
-
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
     ],
 
 ];

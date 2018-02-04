@@ -45,6 +45,12 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        //auth for Driver model (Manual)
+        'drivers' => [
+            'driver' => 'jwt',
+            'provider' => 'drivers'
+        ]
     ],
 
     /*
@@ -74,6 +80,12 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        
+        //auth for Driver model (Manual)
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => App\Driver::class,
+        ]
     ],
 
     /*
