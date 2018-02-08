@@ -57,7 +57,7 @@ $(function() {
             { data: 'bus_number', name: 'bus_number' },
             { data: 'plate_no', name: 'plate_no' },
             { data: 'year_manufactured', name: 'year_manufactured'},
-            { data: 'track_status', name: 'track_status'},
+            { data: 'bus_location', name: 'bus_location'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });

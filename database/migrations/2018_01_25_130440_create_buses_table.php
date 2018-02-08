@@ -18,7 +18,7 @@ class CreateBusesTable extends Migration
             $table->string('bus_number');
             $table->string('plate_no');
             $table->string('year_manufactured');
-            $table->string('track_status');
+            $table->string('bus_location')->nullable();
             $table->timestamps('');
         });
     }

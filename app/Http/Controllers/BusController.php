@@ -27,6 +27,14 @@ class BusController extends Controller
             ->addColumn('action', function($bus){
                 return '<a href="bus/' . $bus->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="bus/' . $bus->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
+            ->editColumn('bus_location', function($bus){
+                if($bus->bus_location == NULL){
+                    return 'OFF';
+                }
+                else{
+                    return 'ON';
+                }
+            })
             ->make(true);
     }
     /**
@@ -63,7 +71,7 @@ class BusController extends Controller
         $bus->bus_number = $request->input('bus_number');
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
-        $bus->track_status = 'OFF';
+        // $bus->bus_location = 'OFF';
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has created successfully.');
@@ -133,5 +141,22 @@ class BusController extends Controller
         $bus = Bus::find($id);
 
         return redirect('bus')->with('message', 'Bus profile has deleted successfully.');
+    }
+
+    //api
+    public function updateLocation($id, Request $request)
+    {
+        $bus = Bus::find($id);
+        $bus->bus_location = $request->input('bus_location');
+        $bus->save();
+    }
+
+    public function getTrackingLocation($id)
+    {
+        $bus = Bus::find($id);
+        return [
+            'id' => $bus->id,
+            'bus_location' => $bus->bus_location
+        ];
     }
 }
