@@ -71,7 +71,7 @@ class BusController extends Controller
         $bus->bus_number = $request->input('bus_number');
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
-        // $bus->bus_location = 'OFF';
+        $bus->track_status = 'OFF';
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has created successfully.');
@@ -125,6 +125,7 @@ class BusController extends Controller
         $bus->bus_number = $request->input('bus_number');
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
+        $bus->track_status = 'OFF';
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has updated successfully.');
@@ -148,15 +149,14 @@ class BusController extends Controller
     {
         $bus = Bus::find($id);
         $bus->bus_location = $request->input('bus_location');
+        $bus->track_status = $request->input('track_status');
         $bus->save();
+        return response()->json([$bus]);
     }
 
-    public function getTrackingLocation($id)
+    public function getBusTrackingData()
     {
-        $bus = Bus::find($id);
-        return [
-            'id' => $bus->id,
-            'bus_location' => $bus->bus_location
-        ];
+        $bus = Bus::all();
+        return $bus;
     }
 }
