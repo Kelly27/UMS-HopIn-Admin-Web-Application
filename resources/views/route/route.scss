@@ -1,4 +1,5 @@
 @import '../layouts/createPage';
+
 .routeManagerPage{
     table{
         width: 100%;
@@ -68,7 +69,7 @@
     }
     .reset-btn{
         position: absolute;
-        top: 40px;
+        top: 10px;
         right: 25px;
         background-color: #CD3331FF;
         color: #fff;
@@ -76,4 +77,43 @@
         padding: 5px 10px;
         text-decoration: none;
     }
+    .sort-col{
+        padding: 0px;
+        h5{
+            color: white;
+            font-weight: bold;
+            background-color: $primary-color;
+            margin: 0;
+            padding: 10px 0px 10px 10px;
+        }
+        .itembox{
+            height: 136px;
+            overflow-y: scroll;
+            p{
+                color: black;
+                background-color: #efefef;
+                border-bottom: 2px solid #ababab;
+                border-radius: 5px;
+                padding: 5px 20px;
+                margin: 0px;
+            }
+        }
+    }
+    .arrow-col{
+        text-align: center;
+        font-weight: 900;
+        font-size: 80px;
+    }
+    #scrollbar::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+    #scrollbar::-webkit-scrollbar-thumb {
+        background-color: #000000;
+    }
+    #scrollbar::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
+
 }

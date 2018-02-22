@@ -21,10 +21,9 @@ class DriverAuthController extends Controller
 
     public function login(Request $request){
         $credentials = $request->only('staff_number', 'password');
-        // return $credentials;
-        // dd(Auth::guard('drivers'));
+        $driver = Driver::where('staff_number', $credentials["staff_number"])->select(['id', 'name', 'ic_number'])->first();
         if ( $token = Auth::guard('drivers')->attempt($credentials) ) {
-            return response()->json(['result' => $token]);
+            return response()->json(['result' => $token, 'driver' => $driver]);
         } else {
             return response()->json(['result'=>false]);
         }

@@ -134,4 +134,9 @@ class AnnouncementController extends Controller
         return redirect('announcement')->with('message', 'Announcement has deleted succesfully.');
 
     }
+
+    public function getAnnouncementData(){
+        $allAnnouncement = Announcement::all();
+        return $allAnnouncement;
+    }
 }

@@ -26,6 +26,7 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::post('driver_login', 'DriverAuthController@login');
     Route::post('bus/{id}/updateLocation', 'BusController@updateLocation');
     Route::get('bus/getBusTrackingData', 'BusController@getBusTrackingData');
+    Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
     // Route::group(['middleware' => 'jwt.auth'], function(){
     //     Route::post('get_user_details', 'DriverAuthController@get_user_details');
     // });

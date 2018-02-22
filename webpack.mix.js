@@ -28,3 +28,7 @@ mix.sass('resources/views/auth/login.scss', 'public/css')
     .sass('resources/views/bus_stop/bus_stop.scss', 'public/css')
     .sass('resources/views/reservation/reservation.scss', 'public/css')
     .sass('resources/views/report/report.scss', 'public/css');
+
+mix.copy('node_modules/sortablejs/Sortable.min.js', 'public/js');
+
+    // mix.copyDirectory('assets/img', 'public/img');

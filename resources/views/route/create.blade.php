@@ -82,12 +82,48 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <h5>Route KIV!!!!!!!!!!!!</h5>
-                    {{-- @php var_dump($route_arr); @endphp --}}
-                    <div style="position: absolute; visibility: hidden;"><textarea name="route_arr" id="setRouteArr"></textarea></div>
-                    {{-- <div id="map" value={{$route_arr}} style="width: 100%; height: 500px;"></div> --}}
-                    <div id="map" style="width: 100%; height: 500px;"></div>
-                    <a class="reset-btn" href="javascript:void(0)" onclick="resetRoute()">Reset</a>
+                    <h5>Route</h5>
+                    <div class="row">
+                        <div class="col-sm-5 sort-col">
+                            <h5>Select from here</h5>
+                            <div id="stop-item" class="itembox">
+                                <p>item1</p>
+                                <p>item2</p>
+                                <p>item3</p>
+                                <p>wad</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 arrow-col">
+                            <i class="material-icons">arrow_forward</i>
+                        </div>
+                        <div class="col-sm-5 sort-col">
+                            <h5>Select from here</h5>
+                            <div id="stop-item2" class="itembox">
+                                <p>2item1</p>
+                                <p>item1</p>
+                                <p>item2</p>
+                                <p>item3</p>
+                                <p>wad</p><p>item1</p>
+                                <p>item2</p>
+                                <p>item3</p>
+                                <p>wad</p><p>item1</p>
+                                <p>item2</p>
+                                <p>item3</p>
+                                <p>wad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" style="margin-top: 50px;">
+                        <div class="map-div">
+                            {{-- @php var_dump($route_arr); @endphp --}}
+                            <div style="position: absolute; visibility: hidden; "><textarea name="route_arr" id="setRouteArr"></textarea></div>
+                            {{-- <div id="map" value={{$route_arr}} style="width: 100%; height: 500px;"></div> --}}
+                            <div id="map" style="width: 100%; height: 500px;"></div>
+                            <a class="reset-btn" href="javascript:void(0)" onclick="resetRoute()">Reset</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{ Form::close()}}
@@ -96,6 +132,7 @@
 @endsection
 @section('script')
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARzgseB8wPPpiP65N9rzPqFwcdA4WuugY&callback=initMap"></script>
+<script type="text/javascript" src="{{asset('js/Sortable.min.js')}}"></script>
 <script>
     var poly;
     var map;
@@ -107,7 +144,7 @@
         disableDefaultUI: true
         });
 
-        {{-- var routeMap_edit_data = JSON.parse(document.getElementById('map').getAttribute('value')); --}}
+        // var routeMap_edit_data = JSON.parse(document.getElementById('map').getAttribute('value'));
 
         poly = new google.maps.Polyline({
           strokeColor: '#000000',
@@ -141,5 +178,19 @@
     function updateData(){
         document.getElementById('setRouteArr').value = JSON.stringify(data);
     }
+
+    var el = document.getElementById('stop-item');
+    var sortable = Sortable.create(el,{
+        group: {name: "sorting", put: true, pull: 'clone'},
+        sort: false,
+        animation: 100
+    });
+    var el2 = document.getElementById('stop-item2');
+    var sortable = Sortable.create(el2,{
+        group: {name: "sorting", put: true, pull: false},
+        sort: true,
+        animation: 100
+    });
+
 </script>
 @endsection

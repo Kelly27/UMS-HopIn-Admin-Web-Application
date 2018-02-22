@@ -111,12 +111,58 @@
 
 .createRoutePage .reset-btn {
   position: absolute;
-  top: 40px;
+  top: 10px;
   right: 25px;
   background-color: #CD3331FF;
   color: #fff;
   border-radius: 3px;
   padding: 5px 10px;
   text-decoration: none;
+}
+
+.createRoutePage .sort-col {
+  padding: 0px;
+}
+
+.createRoutePage .sort-col h5 {
+  color: white;
+  font-weight: bold;
+  background-color: #0379be;
+  margin: 0;
+  padding: 10px 0px 10px 10px;
+}
+
+.createRoutePage .sort-col .itembox {
+  height: 136px;
+  overflow-y: scroll;
+}
+
+.createRoutePage .sort-col .itembox p {
+  color: black;
+  background-color: #efefef;
+  border-bottom: 2px solid #ababab;
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin: 0px;
+}
+
+.createRoutePage .arrow-col {
+  text-align: center;
+  font-weight: 900;
+  font-size: 80px;
+}
+
+.createRoutePage #scrollbar::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.createRoutePage #scrollbar::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.createRoutePage #scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
 }
 
