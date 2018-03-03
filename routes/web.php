@@ -17,9 +17,22 @@ Auth::routes();
 // Route::get('route/api', 'RouteController@json_data');
 // Route::get('announcement/api', 'AnnouncementController@json_data');
 // Route::get('driver/api', 'DriverController@json_data');
-// Route::get('test', function(){
-//     return view('test');
-// });
+Route::get('test', function(){
+    $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=Toronto&destinations=Chicago&key=AIzaSyARzgseB8wPPpiP65N9rzPqFwcdA4WuugY';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    $response_a = json_decode($response, true);
+    // echo extension_loaded('curl');
+    return $response_a;
+
+});
 
 Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::get('driver_register', 'DriverAuthController@register');
@@ -27,6 +40,7 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::post('bus/{id}/updateLocation', 'BusController@updateLocation');
     Route::get('bus/getBusTrackingData', 'BusController@getBusTrackingData');
     Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
+    Route::get('route/getRoute', 'RouteController@getRouteData');
     // Route::group(['middleware' => 'jwt.auth'], function(){
     //     Route::post('get_user_details', 'DriverAuthController@get_user_details');
     // });

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Jenssegers\Agent\Agent;
 
 class CORS
 {
@@ -15,7 +16,7 @@ class CORS
      */
     public function handle($request, Closure $next)
     {
-        // header('Access-Control-Allow-Origin: http://localhost:8080'); //for ios
+        // header('Access-Control-Allow-Origin: http://localhost:8080'); //for ios, update: useless, just use the webview thing
         header('Access-Control-Allow-Origin: *');
 
         $headers = [

@@ -112,7 +112,6 @@
             marker = new google.maps.Marker({
                 position: event.latLng,
                 {{-- title: '#' + path.getLength(), --}}
-                draggable: true,
                 animation: google.maps.Animation.DROP,
                 map: map
             });

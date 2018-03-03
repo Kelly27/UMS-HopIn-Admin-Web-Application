@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Route;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
-
+use App\Bus_Stop;
 class RouteController extends Controller
 {
     /**
@@ -46,7 +46,11 @@ class RouteController extends Controller
     public function create()
     {
         // return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
-        return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr]);
+        $bus_stops = Bus_Stop::all(['name', 'location']);
+        foreach($bus_stops as $stop){
+            $stop->location = json_decode($stop->location);
+        };
+        return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr, 'bus_stops_map' => $bus_stops]);
     }
 
     /**
@@ -61,18 +65,16 @@ class RouteController extends Controller
         $this->validate($request, [
             'route_name' => 'required',
             'route_desc' => 'required',
-            'bus_stop' => 'required',
             'route_arr' => 'required',
         ],[
             'route_name.required' => 'The field \'ROUTE NAME\' is required.',
             'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
-            'bus_stop.required' => 'The field \'BUS STOP THAT INVOLVED\' is required.',
             'route_arr.required' => 'The field \'ROUTE\' is required.'
         ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
-        $route->bus_stops = json_encode($request->input('bus_stop'));
         $route->route_arr = $request->input('route_arr');
+        $route->polyline = $request->input('path_arr');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has created succesfully');
@@ -97,6 +99,7 @@ class RouteController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $bus_stops = Bus_Stop::all(['name', 'location']);
         $route = Route::where('id', $id)->first();
         return view('route.create', [
             'id' => $route->id,
@@ -104,7 +107,8 @@ class RouteController extends Controller
             'route_desc' => $route->description,
             'bus_stop' => json_decode($route->bus_stops),
             'route_arr' => $route->route_arr,
-            'bus_stop_arr' => $this->bus_stop_arr
+            'bus_stop_arr' => $this->bus_stop_arr,
+            'bus_stops_map' => $bus_stops
         ]);
     }
 
@@ -122,18 +126,17 @@ class RouteController extends Controller
         $this->validate($request, [
             'route_name' => 'required',
             'route_desc' => 'required',
-            'bus_stop' => 'required',
             'route_arr' => 'required',
         ],[
             'route_name.required' => 'The field \'ROUTE NAME\' is required.',
             'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
-            'bus_stop.required' => 'The field \'BUS STOP THAT INVOLVED\' is required.',
             'route_arr.required' => 'The field \'ROUTE\' is required.'
         ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
         $route->bus_stops = json_encode($request->input('bus_stop'));
         $route->route_arr = $request->input('route_arr');
+        $route->polyline = $request->input('path_arr');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has updated succesfully');
@@ -150,5 +153,11 @@ class RouteController extends Controller
         Route::destroy($id);
         return redirect('route')->with('message', 'Route has been deleted succesfully');
 
+    }
+
+    //api
+    public function getRouteData(){
+        $route = Route::all(['id', 'title', 'description', 'route_arr', 'polyline']);
+        return $route;
     }
 }

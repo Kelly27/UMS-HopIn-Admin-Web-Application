@@ -182,6 +182,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        // Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*
@@ -234,7 +235,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Guzzle' => Kozz\Laravel\Facades\Guzzle::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        // 'Agent' => Jessegers\Agent\AgentServiceProvider::class
     ],
 
 ];
