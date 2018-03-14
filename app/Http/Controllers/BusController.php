@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bus;
+use App\Route;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -33,6 +34,12 @@ class BusController extends Controller
                 }
                 else{
                     return 'ON';
+                }
+            })
+            ->editColumn('route_id', function($bus){
+                $route = Route::where('id', $bus->route_id)->first();
+                if($bus->route_id){
+                    return $route['title'];
                 }
             })
             ->make(true);

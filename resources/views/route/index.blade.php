@@ -19,6 +19,7 @@
             <tr>
                 <td width="25%">Route Name</td>
                 <td>Route Description</td>
+                <td>Operating Bus</td>
                 <td width="10%">Action</td>
             </tr>
         </thead>
@@ -54,6 +55,7 @@ $(function() {
         columns: [
             { data: 'title', name: 'title' },
             { data: 'description', name: 'description' },
+            { data: 'bus', name: 'bus' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{

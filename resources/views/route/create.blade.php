@@ -39,28 +39,35 @@
             </div>
             @endif
             <div class="col-sm-7">
-{{-- <h5>ID</h5>
-    <div id="ID_input">
-    {{Form::text('id', $id, ['disabled' => 'disabled'] )}}
-</div> --}}
-<div class="route_name">
-    <h5>Route Name</h5>
-    @if(isset($route_name))
-    {{Form::text('route_name', $route_name)}}
-    @else
-    {{Form::text('route_name')}}
-    @endif
-</div>
-<div class="route_desc">
-    <h5>Route Description</h5>
-    @if(isset($route_desc))
-    {{Form::textarea('route_desc', $route_desc, ['id' => 'desc_field'])}}
-    @else
-    {{Form::textarea('route_desc', null, ['id' => 'desc_field'])}}
-    @endif
-</div>
-</div>
-</div>
+                {{-- <h5>ID</h5>
+                    <div id="ID_input">
+                    {{Form::text('id', $id, ['disabled' => 'disabled'] )}}
+                </div> --}}
+                <div class="route_name">
+                    <h5>Route Name</h5>
+                    @if(isset($route_name))
+                    {{Form::text('route_name', $route_name)}}
+                    @else
+                    {{Form::text('route_name')}}
+                    @endif
+                </div>
+                <div class="route_desc">
+                    <h5>Route Description</h5>
+                    @if(isset($route_desc))
+                    {{Form::textarea('route_desc', $route_desc, ['id' => 'desc_field'])}}
+                    @else
+                    {{Form::textarea('route_desc', null, ['id' => 'desc_field'])}}
+                    @endif
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <h5>Select Bus the operates this route</h5>
+                {{Form::select('operating bus', $buses)}}
+
+                <h5>Please Select Route Color</h5>
+                <input class="jscolor" value="3AD664">
+            </div>
+        </div>
 <div class="row">
     <div class="col-sm-12">
         <h5>Route</h5>
@@ -114,6 +121,7 @@
     });
 
 </script>
+<script type="text/javascript" src="{{asset('js/jscolor.min.js')}}"></script>
 <script>
     var map;
     var directionsService;
@@ -213,7 +221,6 @@
                     if (status == 'OK') {
                         addPath(google.maps.geometry.encoding.decodePath(result.routes[0].overview_polyline));
                         // this.pathArchive = google.maps.geometry.encoding.decodePath(result.routes[0].overview_polyline);
-                        saveDirectionData(result);
                     }
                 });
             };
@@ -262,7 +269,7 @@
         pathArr.push(path);
         createPolylines(pathArr);
         console.log('pathArr', pathArr);
-        savePathtoDatabase(pathArr);
+        saveDirectionData(pathArr);
     };
 
     function createPolylines(pathArray){
@@ -304,7 +311,7 @@
 
     //saves the data from google map direction
     function saveDirectionData(data){
-        directionDataArr.push();
+        directionDataArr.push(data);
         let pathDom = document.getElementById('setPathArr');
         pathDom.value = JSON.stringify(directionDataArr);
     }

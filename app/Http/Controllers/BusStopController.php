@@ -138,4 +138,10 @@ class BusStopController extends Controller
 
         return redirect('bus_stop')->with('message', 'Bus stop profile has deleted succesfully');
     }
+
+    public function getBusStopData()
+    {
+        $bus_stops = Bus_Stop::orderBy('id', 'asc')-> get(['id', 'name', 'description', 'location']);
+        return $bus_stops;
+    }
 }

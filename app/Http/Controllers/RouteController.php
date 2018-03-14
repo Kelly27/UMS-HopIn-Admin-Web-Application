@@ -6,6 +6,8 @@ use App\Route;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Bus_Stop;
+use App\Bus;
+
 class RouteController extends Controller
 {
     /**
@@ -13,18 +15,12 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public $bus_stop_arr = ['FKJ','FSSA', 'FKI', 'FKSW', 'FSMP'];
 
     public function index()
     {
-
-        // $result = \Guzzle::get('https://umsbus2017.000webhostapp.com/announcement.json');
-        // dd(json_decode($result->getBody()));
         $routes = Route::orderBy('created_at', 'DESC')->get();
-        $fp = fopen('route.json', 'w');
-        fwrite($fp, json_encode($routes));
-        fclose($fp);
         return view('route.index', ['routes' => $routes]);
     }
 
@@ -36,6 +32,14 @@ class RouteController extends Controller
             ->addColumn('action', function($route){
                 return '<a href="route/' . $route->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="route/' . $route->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
+            ->editColumn('bus', function($route){
+                $bus = $route->buses;
+                $data = [];
+                foreach ($bus as $b) {
+                    $data[] = $b->bus_number;
+                }
+                return json_encode($data);
+            })
             ->make(true);
     }
     /**
@@ -45,12 +49,17 @@ class RouteController extends Controller
      */
     public function create()
     {
+        $buses = ['Please Select'];
         // return view('route.create', ['id' => Route::orderBy('id', 'desc')->first()->id + 1, 'bus_stop_arr' => $this->bus_stop_arr]);
         $bus_stops = Bus_Stop::all(['name', 'location']);
         foreach($bus_stops as $stop){
             $stop->location = json_decode($stop->location);
         };
-        return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr, 'bus_stops_map' => $bus_stops]);
+        $buses_data = Bus::orderBy('created_at', 'DESC')->get();
+        foreach($buses_data as $b){
+            $buses[] = $b->bus_number;
+        }
+        return view('route.create', ['bus_stop_arr' => $this->bus_stop_arr, 'bus_stops_map' => $bus_stops, 'buses' => $buses]);
     }
 
     /**
@@ -157,7 +166,7 @@ class RouteController extends Controller
 
     //api
     public function getRouteData(){
-        $route = Route::all(['id', 'title', 'description', 'route_arr', 'polyline']);
+        $route = Route::orderBy('id', 'asc')->get(['id', 'title', 'description', 'route_arr', 'polyline', 'color']);
         return $route;
     }
 }
