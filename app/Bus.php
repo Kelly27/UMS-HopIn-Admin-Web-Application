@@ -11,4 +11,8 @@ class Bus extends Model
     public function routes(){
         return $this->belongsTo('App\Route');
     }
+
+    public function drivers(){
+        return $this->belongsTo('App\Driver');
+    }
 }

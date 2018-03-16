@@ -144,4 +144,12 @@ class DriverController extends Controller
         $driver = Driver::find($id);
         return redirect('driver')->with('message', 'Driver\'s has deleted succesfully');
     }
+
+    public function getAssignedInfo($id){
+        $driver = Driver::all();
+        foreach ($driver as $d) {
+            $bus = $d->assignedBus;
+        }
+        return $driver;
+    }
 }

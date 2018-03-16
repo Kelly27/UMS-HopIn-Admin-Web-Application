@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bus;
 use App\Route;
+use App\Driver;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -165,5 +166,18 @@ class BusController extends Controller
     {
         $bus = Bus::all();
         return $bus;
+    }
+
+
+    public function getOperatingInfo($id){
+        $bus = Bus::find($id);
+        $route = Route::where('id', $bus->route_id)->first();
+        $driver = Driver::where('id', $bus->driver_id)->first();
+        $info = [
+            'bus' => $bus,
+            'route' => $route,
+            'driver' => $driver
+        ];
+        return $info;
     }
 }

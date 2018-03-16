@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateBusTable extends Migration
+class UpdateBuses2Table extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class UpdateBusTable extends Migration
     public function up()
     {
         Schema::table('buses', function (Blueprint $table) {
-            $table->string('route_id')->after('bus_location');
+            $table->integer('route_id')->after('bus_location')->nullable();
+            $table->string('driver_staff_number')->after('route_id')->nullable();
         });
     }
 
@@ -26,7 +27,8 @@ class UpdateBusTable extends Migration
     public function down()
     {
         Schema::table('buses', function (Blueprint $table) {
-            $table->dropColumn('color');
+            $table->dropColumn('route_id');
+            $table->dropColumn('driver_staff_number');
         });
     }
 }

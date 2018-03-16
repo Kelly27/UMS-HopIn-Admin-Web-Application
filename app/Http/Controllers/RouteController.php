@@ -169,4 +169,10 @@ class RouteController extends Controller
         $route = Route::orderBy('id', 'asc')->get(['id', 'title', 'description', 'route_arr', 'polyline', 'color']);
         return $route;
     }
+
+    public function play(){
+        $route = Route::where('id', 1)->first();
+        $bus = $route->buses;
+        return $route;
+    }
 }

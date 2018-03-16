@@ -33,6 +33,7 @@ Route::get('test', function(){
     return $response_a;
 
 });
+Route::get('play' , 'RouteController@play');
 
 Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::get('driver_register', 'DriverAuthController@register');
@@ -42,6 +43,8 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
     Route::get('route/getRoute', 'RouteController@getRouteData');
     Route::get('bus_stop/getBusStop', 'BusStopController@getBusStopData');
+    Route::get('bus/{id}/getOperatingInfo', 'BusController@getOperatingRoute');
+    Route::get('driver/{id}/getAssignedInfo', 'DriverController@getAssignedInfo');
     // Route::group(['middleware' => 'jwt.auth'], function(){
     //     Route::post('get_user_details', 'DriverAuthController@get_user_details');
     // });
