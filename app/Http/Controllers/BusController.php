@@ -147,7 +147,7 @@ class BusController extends Controller
      */
     public function destroy($id, Bus $bus)
     {
-        $bus = Bus::destroy($id);
+        Bus::destroy($id);
 
         return redirect('bus')->with('message', 'Bus profile has deleted successfully.');
     }

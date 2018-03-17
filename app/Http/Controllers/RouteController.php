@@ -78,12 +78,13 @@ class RouteController extends Controller
         ],[
             'route_name.required' => 'The field \'ROUTE NAME\' is required.',
             'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
-            'route_arr.required' => 'The field \'ROUTE\' is required.'
+            'route_arr.required' => 'The field \'ROUTE\' is required.',
         ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
         $route->route_arr = $request->input('route_arr');
         $route->polyline = $request->input('path_arr');
+        $route->color = $request->input('color');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has created succesfully');
@@ -139,13 +140,14 @@ class RouteController extends Controller
         ],[
             'route_name.required' => 'The field \'ROUTE NAME\' is required.',
             'route_desc.required' => 'The field \'ROUTE DESCRIPTION\' is required.',
-            'route_arr.required' => 'The field \'ROUTE\' is required.'
+            'route_arr.required' => 'The field \'ROUTE\' is required.',
         ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
         $route->bus_stops = json_encode($request->input('bus_stop'));
         $route->route_arr = $request->input('route_arr');
         $route->polyline = $request->input('path_arr');
+        $route->color = $request->input('color');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has updated succesfully');
