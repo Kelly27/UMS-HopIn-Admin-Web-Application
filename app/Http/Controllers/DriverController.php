@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Bus;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Hash;
@@ -146,10 +147,10 @@ class DriverController extends Controller
     }
 
     public function getAssignedInfo($id){
-        $driver = Driver::all();
-        foreach ($driver as $d) {
-            $bus = $d->assignedBus;
-        }
+        $driver = Driver::where('id', $id)->first();
+        $assignedBus = $driver->assignedBus;
+        $assignedBusData = Bus::where('id', $assignedBus->id)->first();
+        $assignedBus->routes;
         return $driver;
     }
 }

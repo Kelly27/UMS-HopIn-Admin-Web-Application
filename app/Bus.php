@@ -9,10 +9,10 @@ class Bus extends Model
     protected $fillable = ['bus_number', 'plate_no', 'year_manufactured', 'bus_location'];
 
     public function routes(){
-        return $this->belongsTo('App\Route');
+        return $this->belongsTo('App\Route', 'route_id');
     }
 
     public function drivers(){
-        return $this->belongsTo('App\Driver');
+        return $this->belongsTo('App\Driver', 'driver_id', 'id');
     }
 }

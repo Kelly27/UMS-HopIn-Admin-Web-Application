@@ -26,24 +26,24 @@ class BusController extends Controller
         $buses = Bus::query()->orderBy('created_at', 'desc');
 
         return Datatables::of($buses)
-            ->addColumn('action', function($bus){
-                return '<a href="bus/' . $bus->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="bus/' . $bus->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
-            })
-            ->editColumn('bus_location', function($bus){
-                if($bus->bus_location == NULL){
-                    return 'OFF';
-                }
-                else{
-                    return 'ON';
-                }
-            })
-            ->editColumn('route_id', function($bus){
-                $route = Route::where('id', $bus->route_id)->first();
-                if($bus->route_id){
-                    return $route['title'];
-                }
-            })
-            ->make(true);
+        ->addColumn('action', function($bus){
+            return '<a href="bus/' . $bus->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="bus/' . $bus->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
+        })
+        ->editColumn('bus_location', function($bus){
+            if($bus->bus_location == NULL){
+                return 'OFF';
+            }
+            else{
+                return 'ON';
+            }
+        })
+        ->editColumn('route_id', function($bus){
+            $route = Route::where('id', $bus->route_id)->first();
+            if($bus->route_id){
+                return $route['title'];
+            }
+        })
+        ->make(true);
     }
     /**
      * Show the form for creating a new resource.
@@ -158,6 +158,7 @@ class BusController extends Controller
         $bus = Bus::find($id);
         $bus->bus_location = $request->input('bus_location');
         $bus->track_status = $request->input('track_status');
+        $bus->next_stop = $request->input('next_stop');
         $bus->save();
         return response()->json([$bus]);
     }
@@ -168,16 +169,23 @@ class BusController extends Controller
         return $bus;
     }
 
-
     public function getOperatingInfo($id){
-        $bus = Bus::find($id);
-        $route = Route::where('id', $bus->route_id)->first();
-        $driver = Driver::where('id', $bus->driver_id)->first();
-        $info = [
-            'bus' => $bus,
-            'route' => $route,
-            'driver' => $driver
-        ];
-        return $info;
+        $bus = Bus::where('id', $id)->first();
+        $route = $bus->routes;
+        $driver = $bus->drivers;
+        return $bus;
+    }
+
+    public function getETA($origin, $destination){
+        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . $origin . '&destinations=' . $destination . '&key=AIzaSyARzgseB8wPPpiP65N9rzPqFwcdA4WuugY';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($ch);
+        return $response;
     }
 }
