@@ -17,10 +17,12 @@
         <table class="table table-bordered" id="routes-table">
         <thead style = "background-color: #0379be; color: white;">
             <tr>
-                <td width="25%">Route Name</td>
+                <td>Route Name</td>
                 <td>Route Description</td>
                 <td>Operating Bus</td>
-                <td width="10%">Action</td>
+                <td>Created On</td>
+                <td>Updated On</td>
+                <td>Action</td>
             </tr>
         </thead>
     </table>
@@ -56,6 +58,8 @@ $(function() {
             { data: 'title', name: 'title' },
             { data: 'description', name: 'description' },
             { data: 'bus', name: 'bus' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{

@@ -96,8 +96,8 @@ class DriverController extends Controller
      */
     public function edit($id, Driver $driver)
     {
-        $driver = Driver::find($id);
-
+        $driver = Driver::where('id',$id)->first();
+        // return $driver;
         return view('driver.create', [
             'name' => $driver->name,
             'ic_number' => $driver->ic_number,
@@ -115,7 +115,7 @@ class DriverController extends Controller
      */
     public function update($id, Request $request, Driver $driver)
     {
-        $driver = Driver::find($id);
+        $driver = Driver::where('id', $id)->first();
 
         $this->validate($request, [
             'name' => 'required',
@@ -140,9 +140,10 @@ class DriverController extends Controller
      * @param  \App\Driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Driver $driver)
+    public function destroy($id)
     {
-        Driver::find($id);
+        $driver = Driver::where('id', $id)->first();
+        $driver->delete();
         return redirect('driver')->with('message', 'Driver\'s has deleted succesfully');
     }
 

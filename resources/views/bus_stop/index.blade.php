@@ -21,6 +21,8 @@
                 <td>Details</td>
                 <td width="10%">Latitude</td>
                 <td width="10%">Longitude</td>
+                <td>Created On</td>
+                <td>Updated On</td>
                 <td width="10%">Action</td>
             </tr>
         </thead>
@@ -58,6 +60,8 @@ $(function() {
             { data: 'description', name: 'description' },
             { data: 'location.lat', name: 'location.lat'},
             { data: 'location.lng', name: 'longitude.lng'},
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{

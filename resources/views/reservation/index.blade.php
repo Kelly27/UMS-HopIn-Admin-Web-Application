@@ -21,6 +21,8 @@
                 <td>Applicant's Name</td>
                 <td>Requested On</td>
                 <td>Approval Status</td>
+                <td>Created On</td>
+                <td>Updated On</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -58,6 +60,8 @@ $(function() {
             { data: 'applicant_info.name', name: 'applicant_info.name' },
             { data: 'created_on', name: 'created_on'},
             { data: 'approval_status', name: 'approval_status'},
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });

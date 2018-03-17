@@ -20,6 +20,7 @@
                 <td width="25%">Announcement Title</td>
                 <td>Announcement Content</td>
                 <td width="13%">Created On</td>
+                <td width="13%">Updated On</td>
                 <td width="10%">Action</td>
             </tr>
         </thead>
@@ -56,6 +57,7 @@ $(function() {
             { data: 'title', name: 'title' },
             { data: 'content', name: 'content' },
             { data: 'created_at', name: 'created_at'},
+            { data: 'updated_at', name: 'updated_at'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{

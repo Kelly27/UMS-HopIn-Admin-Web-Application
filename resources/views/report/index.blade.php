@@ -22,6 +22,8 @@
                 <td>Reported On</td>
                 <td>Type</td>
                 <td>Status</td>
+                <td>Created On</td>
+                <td>Updated On</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -60,6 +62,8 @@ $(function() {
             { data: 'created_on', name: 'created_on'},
             { data: 'type', name: 'type'},
             { data: 'status', name: 'status'},
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs: [{

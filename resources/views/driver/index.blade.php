@@ -19,6 +19,8 @@
             <tr>
                 <td>Driver's Name </td>
                 <td>Staff Number</td>
+                <td>Created On</td>
+                <td>Updated On</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -37,6 +39,8 @@ $(function() {
         columns: [
             { data: 'name', name: 'name' },
             { data: 'staff_number', name: 'staff_number' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
