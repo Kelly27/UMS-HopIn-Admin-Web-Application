@@ -10,9 +10,11 @@
 
 @section('content')
     <div class="dashboardPage container-fluid contentPage datatable">
-        <h3>Welcome, {{$user}}!
+        <h3>Welcome, {{$user}}!</h3>
+        <h4>
+            Bus Operation
             <button class="btn add-bus-btn" data-toggle="modal" data-target="#addOperationModal"><i class="material-icons">add_box</i>Add Bus Operation</button>
-        </h3>
+        </h4>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif

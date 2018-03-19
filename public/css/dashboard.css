@@ -38,6 +38,16 @@
   margin-top: 10px;
 }
 
+.dashboardPage h3,
+.dashboardPage h4 {
+  color: #000;
+}
+
+.dashboardPage h3 {
+  font-weight: 900;
+  font-style: italic;
+}
+
 .dashboardPage thead > td {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
