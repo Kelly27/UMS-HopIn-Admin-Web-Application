@@ -45,6 +45,7 @@ class BusController extends Controller
         })
         ->make(true);
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -80,6 +81,7 @@ class BusController extends Controller
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
         $bus->track_status = 'OFF';
+        $bus->isOperating = 0;
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has created successfully.');
@@ -134,6 +136,7 @@ class BusController extends Controller
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
         $bus->track_status = 'OFF';
+        $bus->isOperating = 0;
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has updated successfully.');

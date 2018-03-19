@@ -35,7 +35,10 @@ Route::group(['middleware' => ['web','auth']], function () {
         return redirect('home');
     });
 
-    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('home', 'DashboardController@index')->name('home');
+    Route::get('home/dashboard.data', 'DashboardController@dashboard')->name('dashboard.data');
+    Route::get('home/{id}/deleteOperation', 'DashboardController@deleteOperation');
+    Route::post('home/setupOperation', 'DashboardController@setupOperation')->name('setupOperation');
 
     //Route
     Route::get('route', 'RouteController@index')->name('route');
@@ -57,6 +60,7 @@ Route::group(['middleware' => ['web','auth']], function () {
 
     //Bus
     Route::get('bus', 'BusController@index')->name('bus');
+    Route::get('bus/datatables.data', 'BusController@anyData')->name('bus_datatables.data');
     Route::get('bus/datatables.data', 'BusController@anyData')->name('bus_datatables.data');
     Route::get('bus/create', 'BusController@create')->name('createBus');
     Route::post('bus/{id}/store', 'BusController@store')->name('storeBus');

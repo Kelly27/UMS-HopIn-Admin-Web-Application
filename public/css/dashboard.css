@@ -1,4 +1,91 @@
+.datatable table {
+  width: 100%;
+  margin-top: 20px;
+  border: none !important;
+}
+
+.datatable table thead td {
+  border: none !important;
+}
+
+.datatable table thead td:last-child {
+  text-align: center;
+}
+
+.datatable table tbody {
+  background-color: white;
+  color: black;
+}
+
+.datatable table tbody td {
+  border: none !important;
+  border-bottom: 1px solid #abb1b8 !important;
+}
+
+.datatable table tbody td:last-child {
+  text-align: center;
+}
+
+.datatable .action {
+  color: #666666;
+}
+
+.datatable .action:hover {
+  color: #949292;
+}
+
 .dashboardPage {
   margin-top: 10px;
+}
+
+.dashboardPage thead > td {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center !important;
+}
+
+.dashboardPage .add-bus-btn {
+  color: #fff;
+  background-color: #0379be;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  float: right;
+  margin-bottom: 15px;
+}
+
+.dashboardPage .add-bus-btn i {
+  margin-right: 5px;
+}
+
+#addOperationModal select {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #C4C4C4;
+  -webkit-box-shadow: 0 0 10px 0px #C4C4C4;
+          box-shadow: 0 0 10px 0px #C4C4C4;
+}
+
+#addOperationModal #invalid-select {
+  border: 1px solid #bd2626;
+  -webkit-box-shadow: 0 0 10px 0px #bd2626;
+          box-shadow: 0 0 10px 0px #bd2626;
+}
+
+#addOperationModal #invalid-select:focus {
+  outline: none;
+}
+
+#addOperationModal .bus_err_msg,
+#addOperationModal .route_err_msg,
+#addOperationModal .driver_err_msg {
+  color: #bd2626;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+#addOperationModal .submit-modal-btn {
+  background-color: #0379be;
 }
 

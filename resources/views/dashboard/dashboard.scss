@@ -1,3 +1,51 @@
+@import '../layouts/datatable';
+
 .dashboardPage{
     margin-top: 10px;
+
+    thead > td{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        text-align: center !important;
+    }
+
+    .add-bus-btn{
+        color: #fff;
+        background-color: #0379be;
+        display: inline-flex;
+        float: right;
+        margin-bottom: 15px;
+        i{
+            margin-right: 5px;
+        }
+    }
+}
+
+#addOperationModal{
+    select{
+        width: 100%;
+        border-radius: 5px;
+        padding: 5px;
+        border: 1px solid #C4C4C4;
+        box-shadow: 0 0 10px 0px #C4C4C4;
+    }
+
+    #invalid-select{
+        border: 1px solid #bd2626;
+        box-shadow: 0 0 10px 0px #bd2626;
+        &:focus{
+            outline: none;
+        }
+    }
+    
+    .bus_err_msg, .route_err_msg, .driver_err_msg{
+        color: #bd2626;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+
+    .submit-modal-btn{
+        background-color: #0379be;
+    }
+    
 }

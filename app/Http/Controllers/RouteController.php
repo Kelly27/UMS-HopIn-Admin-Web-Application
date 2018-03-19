@@ -84,7 +84,7 @@ class RouteController extends Controller
         $route->description = $request->input('route_desc');
         $route->route_arr = $request->input('route_arr');
         $route->polyline = $request->input('path_arr');
-        $route->color = $request->input('color');
+        $route->color = '#' . $request->input('color');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has created succesfully');
@@ -117,6 +117,7 @@ class RouteController extends Controller
             'route_desc' => $route->description,
             'bus_stop' => json_decode($route->bus_stops),
             'route_arr' => $route->route_arr,
+            'color' => $route->color,
             'bus_stop_arr' => $this->bus_stop_arr,
             'bus_stops_map' => $bus_stops
         ]);
@@ -147,7 +148,7 @@ class RouteController extends Controller
         $route->bus_stops = json_encode($request->input('bus_stop'));
         $route->route_arr = $request->input('route_arr');
         $route->polyline = $request->input('path_arr');
-        $route->color = $request->input('color');
+        $route->color = '#' . $request->input('color');
         $route->save();
 
         return redirect('route')->with('message', 'Route profile has updated succesfully');
