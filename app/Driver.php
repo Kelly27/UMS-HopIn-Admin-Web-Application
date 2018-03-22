@@ -16,7 +16,8 @@ class Driver extends Model implements AuthenticatableContract, AuthorizableContr
     protected $hidden = ['password', 'remember_token'];
     protected $table = 'drivers';
     protected $primaryKey  = 'staff_number'; //use staff number to authenticate instead id
-
+    public $incrementing = false;
+    
     public function getJWTIdentifier()
     {
         return $this->getKey(); // Eloquent model method
@@ -31,6 +32,6 @@ class Driver extends Model implements AuthenticatableContract, AuthorizableContr
     }
 
     public function assignedBus(){
-        return $this->hasOne('App\Bus', 'driver_id', "id");
+        return $this->hasOne('App\Bus', 'driver_id', 'id');
     }
 }

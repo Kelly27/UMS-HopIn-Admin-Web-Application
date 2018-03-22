@@ -63,14 +63,23 @@ class DashboardController extends Controller
         $data = Bus::query()->where('isOperating', 1)->get(['id', 'bus_number', 'route_id', 'driver_id', 'next_stop']);
 
         return Datatables::of($data)
-        ->addColumn('action', function($data){
-            return '<a href="home/' . $data->id . '/deleteOperation" class="action"><i class="material-icons">delete</i></a>';
+        ->addColumn('action', function($d){
+            return '<a href="home/' . $d->id . '/deleteOperation" class="action"><i class="material-icons">delete</i></a>';
         })
-        ->editColumn('route', function($data){
-                return $data->routes->title;
+        ->editColumn('route', function($d){
+            return $d->routes->title;
         })
-        ->editColumn('driver', function($data){
-                return $data->drivers->name;
+        ->editColumn('driver', function($d){
+
+            return $d->drivers->name;
+        })
+        ->editColumn('next_stop', function($d){
+            $n = ' ';
+            if($d->next_stop){
+                $next_stop = json_decode($d->next_stop);
+                $n = $next_stop->name;
+            }
+            return $n;
         })
         ->make(true);
     }
@@ -99,7 +108,7 @@ class DashboardController extends Controller
 
     public function setupOperation(Request $request)
     {
-        return $this->validate($request, [
+        $this->validate($request, [
             'bus' => 'required|not_in:0',
             'route' => 'required|not_in:0',
             'driver' => 'required|not_in:0',
@@ -111,7 +120,7 @@ class DashboardController extends Controller
         $bus->isOperating = 1;
         $bus->save();
 
-        // return redirect('home');
+        return redirect('home')->with('message', 'Bus Operation has added succesfully');
     }
 
     public function deleteOperation($id){

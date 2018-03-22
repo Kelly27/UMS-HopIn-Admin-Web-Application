@@ -37,15 +37,8 @@ class BusController extends Controller
                 return 'ON';
             }
         })
-        ->editColumn('route_id', function($bus){
-            $route = Route::where('id', $bus->route_id)->first();
-            if($bus->route_id){
-                return $route['title'];
-            }
-        })
         ->make(true);
     }
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -80,8 +73,7 @@ class BusController extends Controller
         $bus->bus_number = $request->input('bus_number');
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
-        $bus->track_status = 'OFF';
-        $bus->isOperating = 0;
+        // $bus->isOperating = 0;
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has created successfully.');
@@ -135,8 +127,7 @@ class BusController extends Controller
         $bus->bus_number = $request->input('bus_number');
         $bus->plate_no = $request->input('plate_no');
         $bus->year_manufactured = $request->input('year_manufactured');
-        $bus->track_status = 'OFF';
-        $bus->isOperating = 0;
+        // $bus->isOperating = 0;
         $bus->save();
 
         return redirect('bus')->with('message', 'Bus profile has updated successfully.');
@@ -160,7 +151,6 @@ class BusController extends Controller
     {
         $bus = Bus::find($id);
         $bus->bus_location = $request->input('bus_location');
-        $bus->track_status = $request->input('track_status');
         $bus->next_stop = $request->input('next_stop');
         $bus->save();
         return response()->json([$bus]);

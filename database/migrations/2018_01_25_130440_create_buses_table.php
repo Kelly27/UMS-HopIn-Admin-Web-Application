@@ -19,6 +19,11 @@ class CreateBusesTable extends Migration
             $table->string('plate_no');
             $table->string('year_manufactured');
             $table->string('bus_location')->nullable();
+            $table->boolean('isFull')->nullable();
+            $table->integer('route_id')->nullable();
+            $table->string('driver_id')->nullable();
+            $table->text('next_stop')->nullable();
+            $table->boolean('isOperating')->default(0);
             $table->timestamps('');
         });
     }

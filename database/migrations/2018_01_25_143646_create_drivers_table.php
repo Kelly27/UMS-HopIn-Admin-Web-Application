@@ -17,9 +17,8 @@ class CreateDriversTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('ic_number');
-            $table->string('staff_number')->unique();
+            $table->string('staff_number');
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

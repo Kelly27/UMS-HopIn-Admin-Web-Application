@@ -21,7 +21,6 @@
                 <td>Plate Number</td>
                 <td>Year Manufactured</td>
                 <td>Track Status</td>
-                <td>Current Operating Route</td>
                 <td>Created On</td>
                 <td>Updated On</td>
                 <td>Action</td>
@@ -61,7 +60,6 @@ $(function() {
             { data: 'plate_no', name: 'plate_no' },
             { data: 'year_manufactured', name: 'year_manufactured'},
             { data: 'bus_location', name: 'bus_location'},
-            { data: 'route_id', name: 'route_id'},
             { data: 'created_at', name: 'created_at'},
             { data: 'updated_at', name: 'updated_at'},
             { data: 'action', name: 'action', orderable: false, searchable: false },

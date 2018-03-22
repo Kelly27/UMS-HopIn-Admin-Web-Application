@@ -56,6 +56,7 @@ class AnnouncementController extends Controller
     {
         $announce = new Announcement;
 
+        //validate the form to make sure admin fill in the required information
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required'
@@ -63,7 +64,7 @@ class AnnouncementController extends Controller
             'title' => 'The field \'Title\' is required',
             'content' => 'The field \'Content\' is required'
         ]);
-
+        //save data into database
         $announce->title = $request->input('title');
         $announce->content = $request->input('content');
         $announce->save();

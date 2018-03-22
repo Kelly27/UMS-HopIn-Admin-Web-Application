@@ -17,7 +17,6 @@ class DriverSeeder extends Seeder
             'ic_number' => '912456-12-1256',
             'staff_number' => 'BI987654',
             'password' => '$2y$10$Ir0cc7EYMNLTTR4lmK0cAeiBQl5tpHSkCBWh/fYvqQ0E4J6wNfNPK',
-            'remember_token' => null
         ]);
     }
 }

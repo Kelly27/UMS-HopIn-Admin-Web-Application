@@ -18,6 +18,8 @@ class CreateRoutesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('route_arr');
+            $table->text('polyline');
+            $table->string('color');
             $table->timestamps();
         });
     }

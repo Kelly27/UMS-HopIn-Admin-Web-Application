@@ -11,23 +11,24 @@
 @section('content')
     <div class="dashboardPage container-fluid contentPage datatable">
         <h3>Welcome, {{$user}}!</h3>
+        <hr>
         <h4>
             Bus Operation
             <button class="btn add-bus-btn" data-toggle="modal" data-target="#addOperationModal"><i class="material-icons">add_box</i>Add Bus Operation</button>
         </h4>
         @if(session()->has('message'))
-        <div class="alert alert-success">{{session()->get('message')}}</div>
+        <div class="alert alert-success" style="margin-top: 26px">{{session()->get('message')}}</div>
         @endif
 
 
-        <table class="table table-bordered" id="dashboard-table">
+        <table class="table table-bordered" id="dashboard-data-table">
             <thead style = "background-color: #508F58; color: white;">
                 <tr>
                     <td><i class="menu-i material-icons">directions_bus</i>Bus Number</td>
                     <td><i class="menu-i material-icons">directions</i>Route</td>
                     <td><i class="menu-i material-icons">people</i>Driver</td>
                     <td><i class="menu-i material-icons">store_mall_directory</i>Next Stop</td>
-                    <td>Action</td>
+                    <td width="10%">Action</td>
                 </tr>
             </thead>
         </table>
@@ -40,8 +41,8 @@
 @push('script')
 <script>
 $(function() {
-    $('#dashboard-table').DataTable({
-        processing: true,
+    $('#dashboard-data-table').DataTable({
+        // processing: true,
         serverSide: true,
         fixedHeader: true,
         ajax: '{!! route('dashboard.data') !!}',
