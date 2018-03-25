@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="ReportManagerPage datatable container-fluid contentPage">
-        <a href="{{route('createReport')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
+        {{-- <a href="{{route('createReport')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a> --}}
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
@@ -19,7 +19,6 @@
             <tr>
                 <td width="5%">ID</td>
                 <td>Report Subject</td>
-                <td>Reported On</td>
                 <td>Type</td>
                 <td>Status</td>
                 <td>Created On</td>
@@ -59,7 +58,6 @@ $(function() {
         columns: [
             { data: 'id', name: 'id' },
             { data: 'subject', name: 'subject' },
-            { data: 'created_on', name: 'created_on'},
             { data: 'type', name: 'type'},
             { data: 'status', name: 'status'},
             { data: 'created_at', name: 'created_at' },

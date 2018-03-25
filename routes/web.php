@@ -18,6 +18,7 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::post('driver_login', 'DriverAuthController@login');
     Route::post('bus/{id}/updateLocation', 'BusController@updateLocation');
     Route::post('bus/{id}/update_next_stop', 'BusController@update_next_stop'); ///////
+    Route::post('report/store', 'ReportController@store');
 
     Route::get('driver_register', 'DriverAuthController@register');
     Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
@@ -27,6 +28,7 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::get('bus_stop/getBusStop', 'BusStopController@getBusStopData');
     Route::get('driver/{id}/getAssignedInfo', 'DriverController@getAssignedInfo');
     Route::get('route/getRoute', 'RouteController@getRouteData');
+    Route::get('route/{id}/getRelevantBuses', 'RouteController@getRelevantBuses');
 });
 
 Route::group(['middleware' => ['web','auth']], function () {
@@ -98,9 +100,7 @@ Route::group(['middleware' => ['web','auth']], function () {
     //Report
     Route::get('report', 'ReportController@index')->name('report');
     Route::get('report/datatables.data', 'ReportController@anyData')->name('report_datatables.data');
-    Route::get('report/create', 'ReportController@create')->name('createReport');
-    Route::post('report/{id}/store', 'ReportController@store')->name('storeReport');
-    Route::get('report/{id}/edit', 'ReportController@edit');
-    Route::post('report/{id}/update', 'ReportController@update')->name('updateReport');
+    Route::get('report/{id}/view', 'ReportController@view');
+    Route::post('report/{id}/resolve', 'ReportController@resolve')->name('resolveReport');
     Route::get('report/{id}/delete', 'ReportController@destroy');
 });

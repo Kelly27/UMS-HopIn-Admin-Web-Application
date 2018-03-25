@@ -24,7 +24,7 @@ class ReportController extends Controller
         $reports = Report::query()->orderBy('created_at', 'desc');
         return Datatables::of($reports)
             ->addColumn('action', function($report){
-                return '<a href="report/' . $report->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="report/' . $report->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
+                return '<a href="report/' . $report->id . '/view" class="action"><i class="material-icons">remove_red_eye</i></a><a href="report/' . $report->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
             ->make(true);
     }
@@ -36,7 +36,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('report.create');
+        // return view('report.create');
     }
 
     /**
@@ -47,9 +47,27 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $report = new Report;
+        $report->subject = $request->input('subject');
+        $report->content = $request->input('content');
+        $report->type = $request->input('type');
+        $report->status = 0;
+        $report->save();
+
+        return response()->json([$report]);
     }
 
+    public function view($id){
+        $report = Report::find($id);
+        return view('report.view', ['report' => $report]);
+    }
+
+    public function resolve($id){
+        $report = Report::find($id);
+        $report->status = 1;
+        $report->save();
+        return redirect('report.index');
+    }
     /**
      * Display the specified resource.
      *

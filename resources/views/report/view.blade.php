@@ -11,21 +11,17 @@
 @section('content')
     <div class="viewReportPage createPage container-fluid contentPage">
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-7">
                 <h3>View Report</h3>
             </div>
-            @php
-            if(collect(request()->segments())->last() == 'edit'){
-                $url = 'updateAnnouncement';
-            }
-            else if(collect(request()->segments())->last() == 'create'){
-                $url = 'storeAnnouncement';
-            }
-
-            @endphp
-            {{ Form::open(['url' => route($url, ['id' => Request::segment(2)]), 'method' => 'post']) }}
             <div class="col-sm-2" style="padding-top: 20px;">
-                <a href="#"><button class="btn basic-btn submit-btn">Submit</button></a>
+                <a href="#"><button class="btn basic-btn submit-btn">Print</button></a>
+            </div>
+            <div class="col-sm-1" style="padding-top: 20px;">
+                <a href="{{route('report')}}"><button class="btn basic-btn submit-btn">Back</button></a>
+            </div>
+            <div class="col-sm-2" style="padding-top: 20px;">
+                <a href="{{route('resolveReport', ['id' => $report->id])}}"><button class="btn basic-btn" id="resolve_btn">Resolve</button></a>
             </div>
         </div>
         <div class="inputForm">
@@ -41,28 +37,37 @@
                 @endif
                 <div class="col-sm-2">
                     <h5>ID(Disabled)</h5>
-                    {{Form::text('id', '1', ['disabled' => 'disabled'])}}
+                    {{Form::text('id', $report->id, ['disabled' => 'disabled'])}}
                 </div>
                 <div class="col-sm-5">
                     <h5>Type</h5>
-                    {{Form::text('type', 'driver', ['disabled' => 'disabled'])}}
+                    {{Form::text('type', $report->type, ['disabled' => 'disabled'])}}
                 </div>
                 <div class="col-sm-5">
                     <h5>Reported On</h5>
-                    {{Form::text('date', '12/12/12', ['disabled' => 'disabled'])}}
+                    {{Form::text('date', $report->created_at, ['disabled' => 'disabled'])}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
+                    <h5>Subject</h5>
+                    {{Form::text('subject', $report->subject, ['disabled' => 'disabled'])}}
+                </div>
+                <div class="col-sm-12">
                     <h5>Content</h5>
-                    {{Form::textarea('content', 'adfafdadsf', ['disabled' => 'disabled'])}}
+                    {{Form::textarea('content', $report->content, ['disabled' => 'disabled'])}}
                 </div>
             </div>
-            {{ Form::close()}}
         </div>
     </div>
 @endsection
 
 @push('script')
-
+<script type="text/javascript">
+    $(function(){
+        if(<?php echo $report->status; ?> == 1){
+            $('#resolve_btn').prop('disabled', true);
+        }
+    })
+</script>
 @endpush

@@ -19,7 +19,6 @@
             <tr>
                 <td>Route Name</td>
                 <td>Route Description</td>
-                <td>Operating Bus</td>
                 <td>Created On</td>
                 <td>Updated On</td>
                 <td>Action</td>
@@ -57,7 +56,6 @@ $(function() {
         columns: [
             { data: 'title', name: 'title' },
             { data: 'description', name: 'description' },
-            { data: 'bus', name: 'bus' },
             { data: 'created_at', name: 'created_at' },
             { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },

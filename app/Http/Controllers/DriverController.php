@@ -149,9 +149,11 @@ class DriverController extends Controller
 
     public function getAssignedInfo($id){
         $driver = Driver::where('id', $id)->first();
-        $assignedBus = $driver->assignedBus;
-        $assignedBusData = Bus::where('id', $assignedBus->id)->first();
-        $assignedBus->routes;
+        if($driver->assignedBus){
+            $assignedBus = $driver->assignedBus;
+            $assignedBusData = Bus::where('id', $assignedBus->id)->first();
+            $assignedBus->routes;
+        }
         return $driver;
     }
 }

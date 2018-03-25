@@ -32,14 +32,6 @@ class RouteController extends Controller
             ->addColumn('action', function($route){
                 return '<a href="route/' . $route->id . '/edit" class="action"><i class="material-icons">mode_edit</i></a><a href="route/' . $route->id . '/delete" class="action"><i class="material-icons">delete</i></a>';
             })
-            ->editColumn('bus', function($route){
-                $bus = $route->buses;
-                $data = [];
-                foreach ($bus as $b) {
-                    $data[] = $b->bus_number;
-                }
-                return json_encode($data);
-            })
             ->make(true);
     }
     /**
@@ -173,9 +165,9 @@ class RouteController extends Controller
         return $route;
     }
 
-    public function play(){
-        $route = Route::where('id', 1)->first();
-        $bus = $route->buses;
-        return $route;
+    public function getRelevantBuses($id){
+        $routes = Route::where('id', $id)->first();
+        $buses = $routes->buses;
+        return $routes;
     }
 }

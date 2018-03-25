@@ -151,6 +151,7 @@ class BusController extends Controller
     {
         $bus = Bus::find($id);
         $bus->bus_location = $request->input('bus_location');
+        $bus->isFull = $request->input('isFull');
         $bus->next_stop = $request->input('next_stop');
         $bus->save();
         return response()->json([$bus]);
