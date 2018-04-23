@@ -107,7 +107,7 @@
                     <h5>Pick Up Location:</h5>
                 </div>
                 <div class="col-sm-9">
-                    {{Form::text('pick_up', $reservation->pick_up_location)}}
+                    {{-- {{Form::text('pick_up', $reservation->pick_up_location)}} --}}
                 </div>
                 <div class="col-sm-12">
                     <div id="map1" style="width: 100%; height: 350px;"></div>
@@ -166,26 +166,41 @@
             center: <?php echo $reservation->drop_off_location;?>,
         });
 
-        var marker1 = new google.maps.Marker({
-            position: <?php echo $reservation->pick_up_location; ?>,
-            map: map1,
-            label:{
-                fontWeight: 'bold',
-                text: 'Pick up location'
-            }
-        });
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
 
-        var marker2 = new google.maps.Marker({
-            position: <?php echo $reservation->drop_off_location;?>,
-            map: map2,
-            label:{
-                fontWeight: 'bold',
-                text: 'Drop off location'
-            }
-        });
+        this.getAddress(geocoder, 
+                        <?php echo $reservation->pick_up_location; ?>, 
+                        map1,
+                        infowindow);
 
+        this.getAddress(geocoder, 
+                        <?php echo $reservation->drop_off_location; ?>, 
+                        map2,
+                        infowindow);
+    }
+
+    function getAddress(geocoder, position, map, infowindow){
+        geocoder.geocode({'location': position}, function(results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    var marker = new google.maps.Marker({
+                        position: position,
+                        map: map
+                    });
+                    console.log(results);
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+                } else {
+                    infowindow.setContent("Sorry, cannot find address.");
+                }
+            } else {
+              window.alert('Geocoder failed due to: ' + status);
+            }
+        })
+    }
         // var service = new google.maps.places.PlacesService(map1);
-        
+
         // console.log(service);
         {{-- if (document.getElementById('setLocation').value !== ''){
             var oldMarker = JSON.parse(document.getElementById('setLocation').value);
@@ -198,7 +213,6 @@
         } --}}
         // map1.addListener('click', addMarker1);
         // map2.addListener('click', addMarker2);
-    }
 
     // function addMarker1(event){
     //     if(marker1){
