@@ -17,8 +17,9 @@ Auth::routes();
 Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::post('driver_login', 'DriverAuthController@login');
     Route::post('bus/{id}/updateLocation', 'BusController@updateLocation');
-    Route::post('bus/{id}/update_next_stop', 'BusController@update_next_stop'); ///////
+    Route::post('bus/{id}/update_next_stop', 'BusController@update_next_stop');
     Route::post('report/store', 'ReportController@store');
+    Route::post('reservation/store', 'ReservationController@store');
 
     Route::get('driver_register', 'DriverAuthController@register');
     Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
@@ -91,16 +92,15 @@ Route::group(['middleware' => ['web','auth']], function () {
     //Bus Reservation
     Route::get('reservation', 'ReservationController@index')->name('reservation');
     Route::get('reservation/datatables.data', 'ReservationController@anyData')->name('reservation_datatables.data');
-    Route::get('reservation/create', 'ReservationController@create')->name('createReservation');
-    Route::post('reservation/{id}/store', 'ReservationController@store')->name('storeReservation');
-    Route::get('reservation/{id}/edit', 'ReservationController@edit');
-    Route::post('reservation/{id}/update', 'ReservationController@update')->name('updateReservation');
+    Route::get('reservation/{id}/view', 'ReservationController@view')->name('viewReservation');
+    // Route::get('reservation/{id}/edit', 'ReservationController@edit');
+    // Route::post('reservation/{id}/update', 'ReservationController@update')->name('updateReservation');
     Route::get('reservation/{id}/delete', 'ReservationController@destroy');
 
     //Report
     Route::get('report', 'ReportController@index')->name('report');
     Route::get('report/datatables.data', 'ReportController@anyData')->name('report_datatables.data');
     Route::get('report/{id}/view', 'ReportController@view');
-    Route::post('report/{id}/resolve', 'ReportController@resolve')->name('resolveReport');
+    Route::get('report/{id}/resolve', 'ReportController@resolve')->name('resolveReport');
     Route::get('report/{id}/delete', 'ReportController@destroy');
 });

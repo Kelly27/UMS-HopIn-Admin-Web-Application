@@ -10,7 +10,6 @@
 
 @section('content')
     <div class="ReservationManagerPage datatable container-fluid contentPage">
-        <a href="{{route('createReservation')}}"><button class="btn basic-btn" style="margin-bottom: 20px;">ADD</button></a>
         @if(session()->has('message'))
         <div class="alert alert-success">{{session()->get('message')}}</div>
         @endif
@@ -21,7 +20,6 @@
                 <td>Applicant's Name</td>
                 <td>Requested On</td>
                 <td>Approval Status</td>
-                <td>Created On</td>
                 <td>Updated On</td>
                 <td>Action</td>
             </tr>
@@ -32,23 +30,6 @@
 
 @push('script')
 <script>
-//ajax error occuring due to laravel datatable bug
-// disable datatables error prompt
-{{-- $.fn.dataTable.ext.errMode = 'throw';
-$(document).ajaxError(function(event, jqxhr, settings, exception) {
-
-    if (exception == 'Unauthorized') {
-
-        // Prompt user if they'd like to be redirected to the login page
-        bootbox.confirm("Your session has expired. Would you like to be redirected to the login page?", function(result) {
-            if (result) {
-                window.location = '/login';
-            }
-        });
-
-    }
-}); --}}
-
 $(function() {
     $('#bus-table').DataTable({
         processing: true,
@@ -57,10 +38,9 @@ $(function() {
         ajax: '{!! route('reservation_datatables.data') !!}',
         columns: [
             { data: 'id', name: 'id' },
-            { data: 'applicant_info.name', name: 'applicant_info.name' },
-            { data: 'created_on', name: 'created_on'},
-            { data: 'approval_status', name: 'approval_status'},
+            { data: 'applicant_name', name: 'applicant_name' },
             { data: 'created_at', name: 'created_at' },
+            { data: 'approval_status', name: 'approval_status'},
             { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ]

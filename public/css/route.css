@@ -122,6 +122,8 @@
 
 .createRoutePage .sort-col {
   padding: 0px;
+  -webkit-box-shadow: 4px 4px 9px #807373;
+          box-shadow: 4px 4px 9px #807373;
 }
 
 .createRoutePage .sort-col h5 {

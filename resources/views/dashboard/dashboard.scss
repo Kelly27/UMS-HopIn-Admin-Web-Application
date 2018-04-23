@@ -27,6 +27,23 @@
             margin-right: 5px;
         }
     }
+
+    #isFull{
+        background-color: #E9153A;
+        color: #fff;
+        padding: 3px 9px;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 2px 2px 7px 0px #7b7b7b;
+    }
+    #notFull{
+        background-color: #49B554;
+        color: #fff;
+        padding: 3px 9px;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 2px 2px 7px 0px #7b7b7b;
+    }
 }
 
 #addOperationModal{
@@ -55,5 +72,4 @@
     .submit-modal-btn{
         background-color: #0379be;
     }
-    
 }

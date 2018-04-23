@@ -19,12 +19,7 @@
                 @endif
             </div>
             @php
-            if(collect(request()->segments())->last() == 'edit'){
-                $url = 'updateReservation';
-            }
-            else if(collect(request()->segments())->last() == 'create'){
-                $url = 'storeReservation';
-            }
+            $url = 'viewReservation';
             @endphp
             {{ Form::open(['url' => route($url, ['id' => Request::segment(2)]), 'method' => 'post']) }}
             {{-- <div class="col-sm-2" style="padding-top: 20px;">
@@ -50,11 +45,11 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h5>Reference Number</h5>
-                    {{Form::text('reference_number', 'RR-' . str_pad($ref_num, 4, '0', STR_PAD_LEFT), ['disabled' => 'disabled'])}}
+                    {{Form::text('reference_number', 'RR-' . str_pad($reservation->id, 4, '0', STR_PAD_LEFT), ['disabled' => 'disabled'])}}
                 </div>
                 <div class="col-sm-6">
                     <h5>Requested On</h5>
-                    {{Form::text('requested_date', $requested_date, ['disabled' => 'disabled'])}}
+                    {{Form::text('requested_date', $reservation->created_at, ['disabled' => 'disabled'])}}
                 </div>
             </div>
         </div>
@@ -63,23 +58,23 @@
             <div class="row">
                 <div class="col-sm-7">
                     <h5>Name</h5>
-                    {{Form::text('name', 'John', ['disabled' => 'disabled'])}}
+                    {{Form::text('name', $applicant->applicant_name, ['disabled' => 'disabled'])}}
                 </div>
                 <div class="col-sm-5">
                     <h5>Staff Number</h5>
-                    {{Form::text('staff_number', '123456', ['disabled' => 'disabled'])}}
+                    {{Form::text('staff_number', $applicant->staff_no, ['disabled' => 'disabled'])}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-5">
                     <h5>Contact Number</h5>
-                    {{Form::text('contact_num', '123456', ['disabled' => 'disabled'])}}
+                    {{Form::text('contact_num', $applicant->contact_no, ['disabled' => 'disabled'])}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <h5>Faculty</h5>
-                    {{Form::text('faculty', 'Faculty of ABC', ['disabled' => 'disabled'])}}
+                    {{Form::text('faculty', $applicant->faculty, ['disabled' => 'disabled'])}}
                 </div>
             </div>
         </div>
@@ -88,22 +83,22 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h5>Event / Activity Description</h5>
-                    {{Form::textarea('desc', 'fafdafdassffdfasdf')}}
+                    {{Form::textarea('desc', $reservation->event_desc, ['disabled' => 'disabled'])}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6" style="border-right: 2px solid #aba9a9">
                     <h5 style="font-weight: bold;">Bus Required On</h5>
                     <h5>Date</h5>
-                    {{Form::text('date', 'date')}}
+                    {{Form::text('date', $req_date, ['disabled' => 'disabled'])}}
                     <h5>time</h5>
-                    {{Form::text('time', 'time')}}
+                    {{Form::text('time', $req_time, ['disabled' => 'disabled'])}}
                 </div>
                 <div class="col-sm-6">
                     <h5>Type of Vehicle</h5>
-                    {{Form::text('type', 'type')}}
+                    {{Form::text('type', $reservation->vehicle_type, ['disabled' => 'disabled'])}}
                     <h5>Number of Passenger</h5>
-                    {{Form::text('31', '31')}}
+                    {{Form::text('31', $reservation->number_of_passenger, ['disabled' => 'disabled'])}}
                 </div>
             </div>
             <br>
@@ -112,7 +107,7 @@
                     <h5>Pick Up Location:</h5>
                 </div>
                 <div class="col-sm-9">
-                    {{Form::text('pick_up', 'pickup')}}
+                    {{Form::text('pick_up', $reservation->pick_up_location)}}
                 </div>
                 <div class="col-sm-12">
                     <div id="map1" style="width: 100%; height: 350px;"></div>
@@ -124,7 +119,7 @@
                     <h5>Drop off Location:</h5>
                 </div>
                 <div class="col-sm-9">
-                    {{Form::text('pick_up', 'dropoff')}}
+                    {{Form::text('pick_up', $reservation->dro_off_location)}}
                 </div>
                 <div class="col-sm-12">
                     <div id="map2" style="width: 100%; height: 350px;"></div>

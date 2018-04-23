@@ -60,7 +60,7 @@ class DashboardController extends Controller
     //dashboard datatable
     public function dashboard()
     {
-        $data = Bus::query()->where('isOperating', 1)->get(['id', 'bus_number', 'route_id', 'driver_id', 'next_stop']);
+        $data = Bus::query()->where('isOperating', 1)->get(['id', 'bus_number', 'route_id', 'driver_id', 'next_stop', 'isFull']);
 
         return Datatables::of($data)
         ->addColumn('action', function($d){
@@ -70,7 +70,6 @@ class DashboardController extends Controller
             return $d->routes->title;
         })
         ->editColumn('driver', function($d){
-
             return $d->drivers->name;
         })
         ->editColumn('next_stop', function($d){
@@ -80,6 +79,9 @@ class DashboardController extends Controller
                 $n = $next_stop->name;
             }
             return $n;
+        })
+        ->editColumn('bus_condition', function($d){
+            return $d->isFull;
         })
         ->make(true);
     }
@@ -127,6 +129,7 @@ class DashboardController extends Controller
         $data = Bus::where('id', $id)->first();
         $data->isOperating = 0;
         $data->driver_id = null;
+        $data->bus_location = null;
         $data->save();
         return redirect('home')->with('message', 'Bus Operation for Bus Number [ ' . $data->bus_number . ' ] has deleted succesfully');
     }

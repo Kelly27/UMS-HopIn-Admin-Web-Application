@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->text('applicant_info');
             $table->text('event_desc');
             $table->date('required_datetime');
-            $table->string('vehivle_type');
+            $table->string('vehicle_type');
             $table->integer('number_of_passenger');
             $table->string('pick_up_location');
             $table->string('drop_off_location');

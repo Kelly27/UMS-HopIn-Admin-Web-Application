@@ -68,6 +68,26 @@
   margin-right: 5px;
 }
 
+.dashboardPage #isFull {
+  background-color: #E9153A;
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 2px 7px 0px #7b7b7b;
+          box-shadow: 2px 2px 7px 0px #7b7b7b;
+}
+
+.dashboardPage #notFull {
+  background-color: #49B554;
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 2px 7px 0px #7b7b7b;
+          box-shadow: 2px 2px 7px 0px #7b7b7b;
+}
+
 #addOperationModal select {
   width: 100%;
   border-radius: 5px;

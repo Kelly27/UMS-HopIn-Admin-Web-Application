@@ -66,7 +66,7 @@ class ReportController extends Controller
         $report = Report::find($id);
         $report->status = 1;
         $report->save();
-        return redirect('report.index');
+        return redirect('report');
     }
     /**
      * Display the specified resource.
@@ -108,8 +108,9 @@ class ReportController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy($id, Report $report)
     {
-        //
+        $report = Report::destroy($id);
+        return redirect('report')->with('message', 'Report has deleted successfully.');
     }
 }

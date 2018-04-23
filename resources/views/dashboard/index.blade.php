@@ -28,6 +28,7 @@
                     <td><i class="menu-i material-icons">directions</i>Route</td>
                     <td><i class="menu-i material-icons">people</i>Driver</td>
                     <td><i class="menu-i material-icons">store_mall_directory</i>Next Stop</td>
+                    <td>Bus Condition</td>
                     <td width="10%">Action</td>
                 </tr>
             </thead>
@@ -51,8 +52,21 @@ $(function() {
             { data: 'route', name: 'route'},
             { data: 'driver', name: 'driver'},
             { data: 'next_stop', name: 'next_stop'},
+            { data: 'bus_condition', name: 'bus_condition'},
             { data: 'action', name: 'action', orderable: false, searchable: false },
-        ]
+        ],
+        columnDefs:[{
+            targets: 4,
+            render: function(data, type, row){
+                if(data == 1){
+                    return '<span id="isFull">FULL</span>';
+
+                }
+                else{
+                    return '<span id="notFull">NOT FULL</span>';
+                }
+            }
+        }]
     });
 
     //form validation in modal 

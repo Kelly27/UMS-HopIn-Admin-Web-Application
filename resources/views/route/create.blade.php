@@ -61,9 +61,6 @@
                 </div>
             </div>
             <div class="col-sm-5">
-                <h5>Select Bus the operates this route</h5>
-                {{Form::select('operating bus', $buses)}}
-
                 <h5>Please Select Route Color</h5>
                 <input name="color" class="jscolor" value="3AD664">
             </div>
@@ -95,8 +92,8 @@
         <div class="col-sm-12" style="margin-top: 50px;">
             <div class="map-div">
                 {{-- @php var_dump($route_arr); @endphp --}}
-                <div style="position: absolute; top: -30px"><textarea name="route_arr" id="setRouteArr"></textarea></div>
-                <div style="position: absolute; top: -30px"><textarea name="path_arr" id="setPathArr"></textarea></div>
+                <div style="position: absolute; top: -30px" hidden><textarea name="route_arr" id="setRouteArr"></textarea></div>
+                <div style="position: absolute; top: -30px" hidden><textarea name="path_arr" id="setPathArr"></textarea></div>
                 {{-- <div id="map" value={{$route_arr}} style="width: 100%; height: 500px;"></div> --}}
                 <div id="map" style="width: 100%; height: 500px;"></div>
                 <button class="generate-btn" type="button" onclick=showRoute()>Generate Route on Map</button>
