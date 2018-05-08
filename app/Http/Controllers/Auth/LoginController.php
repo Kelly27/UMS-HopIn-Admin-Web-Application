@@ -36,4 +36,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticate()
+    {
+        if (Auth::attempt(['staff_number' => $staff_number, 'password' => $password])) {
+            // Authentication passed...
+            dd('success');
+            return redirect()->intended('home');
+        }
+        else{
+            dd('daggg');
+        }
+    }
 }

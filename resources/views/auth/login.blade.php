@@ -15,15 +15,15 @@
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    <div class="form-group{{ $errors->has('staff_number') ? ' has-error' : '' }}">
+                        <label for="staff_number" class="col-md-4 control-label">Staff Number</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                            <input id="staff_number" type="staff_number" class="form-control" name="staff_number" value="{{ old('staff_number') }}" required autofocus>
 
-                            @if ($errors->has('email'))
+                            @if ($errors->has('staff_number'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('staff_number') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -58,16 +58,16 @@
                             <button type="submit" class="btn btn-primary">
                                 Login
                             </button>
-
+{{-- 
                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                 Forgot Your Password?
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
 
-                    <div class="text-center">
+{{--                     <div class="text-center">
                         <a href="{{route('register')}}"> Register a new account</a>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>
