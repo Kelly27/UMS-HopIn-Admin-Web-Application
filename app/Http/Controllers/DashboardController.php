@@ -71,7 +71,7 @@ class DashboardController extends Controller
                 return $d->routes->title;
             }
             else{
-                return "<span>Route is not exist.</span>";
+                return '<span style="color:red;">Route is not exist.</span>';
             }
         })
         ->editColumn('driver', function($d){
@@ -79,7 +79,7 @@ class DashboardController extends Controller
                 return $d->drivers->name;
             }
             else{
-                return 'Driver is not exist.';
+                return '<span style="color:red;">Driver is not exist.</span>';
             }
         })
         ->editColumn('next_stop', function($d){

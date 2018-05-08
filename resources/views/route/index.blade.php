@@ -30,23 +30,6 @@
 
 @push('script')
 <script>
-//ajax error occuring due to laravel datatable bug
-// disable datatables error prompt
-$.fn.dataTable.ext.errMode = 'throw';
-$(document).ajaxError(function(event, jqxhr, settings, exception) {
-
-    if (exception == 'Unauthorized') {
-
-        // Prompt user if they'd like to be redirected to the login page
-        bootbox.confirm("Your session has expired. Would you like to be redirected to the login page?", function(result) {
-            if (result) {
-                window.location = '/login';
-            }
-        });
-
-    }
-});
-
 $(function() {
     $('#routes-table').DataTable({
         processing: true,
@@ -63,15 +46,17 @@ $(function() {
         columnDefs: [{
             targets: 1,
             render: function ( data, type, row ) {
-                return data.length > 200 ? data.substr( 0, 200 ) + '...' : data;
+                var d = $.parseHTML(data)[0].textContent;
+                return d.length > 200 ? d.substr( 0, 200 ) + '...' : d;
             }
         },{
             targets: 0,
             render: function ( data, type, row ) {
-                return data.length > 50 ? data.substr( 0, 50 ) + '...' : data;
+                var d = $.parseHTML(data)[0].textContent;
+                return d.length > 200 ? d.substr( 0, 200 ) + '...' : d;
             }
         }]
-    });
+    }); 
 });
 </script>
 @endpush

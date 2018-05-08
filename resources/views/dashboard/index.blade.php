@@ -56,6 +56,18 @@ $(function() {
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ],
         columnDefs:[{
+            targets: 1,
+            render: function(data, type, row){
+                var d = $.parseHTML(data)[0].textContent;
+                return d.length > 200 ? d.substr( 0, 200 ) + '...' : d;
+            }
+        },{
+            targets: 2,
+            render: function(data, type, row){
+                var d = $.parseHTML(data)[0].textContent;
+                return d.length > 200 ? d.substr( 0, 200 ) + '...' : d;
+            }
+        },{
             targets: 4,
             render: function(data, type, row){
                 if(data == 1){

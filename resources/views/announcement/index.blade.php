@@ -64,8 +64,8 @@ $(function() {
             targets: 1,
             {{--make data truncate multiline and removed image and horizontal line--}}
             render: function ( data, type, row ) {
-                var d = $.parseHTML(data)[0].textContent; 
-                var mydata = d.replace(/<img.{0,50}>/g, '');
+                var d = $.parseHTML(data)[0].textContent;
+                var mydata = d.replace(/<img.{0,500}>/g, '');
                 var mydata = mydata.replace('<hr>', '');
                 if (mydata.length > 200){
                     return mydata.substr(0, 200) + '...';
