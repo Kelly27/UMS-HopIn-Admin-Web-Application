@@ -94,8 +94,7 @@ Route::group(['middleware' => ['web','auth']], function () {
     Route::get('reservation', 'ReservationController@index')->name('reservation');
     Route::get('reservation/datatables.data', 'ReservationController@anyData')->name('reservation_datatables.data');
     Route::get('reservation/{id}/view', 'ReservationController@view')->name('viewReservation');
-    // Route::get('reservation/{id}/edit', 'ReservationController@edit');
-    // Route::post('reservation/{id}/update', 'ReservationController@update')->name('updateReservation');
+    Route::get('reservation/{id}/approve', 'ReservationController@approve')->name('approveReservation');
     Route::get('reservation/{id}/delete', 'ReservationController@destroy');
 
     //Report

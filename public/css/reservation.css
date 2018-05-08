@@ -81,3 +81,11 @@
   padding: 5px 10px;
 }
 
+.createReservationPage .approve-btn {
+  background-color: #38C14F;
+}
+
+.createReservationPage .done-btn {
+  background-color: #686868;
+}
+

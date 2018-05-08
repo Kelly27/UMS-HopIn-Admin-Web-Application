@@ -135,6 +135,13 @@ class ReservationController extends Controller
         ]);
     }
 
+    public function approve($id){
+        $reservation = Reservation::find($id);
+        $reservation->approval_status = 1;
+        $reservation->save();
+        return redirect()->route('reservation');
+    }
+
     //api
     public function getNewID(){
         $reservation = Reservation::orderBy('id', 'desc')->first();
