@@ -107,7 +107,6 @@ class RouteController extends Controller
             'id' => $route->id,
             'route_name' => $route->title,
             'route_desc' => $route->description,
-            'bus_stop' => json_decode($route->bus_stops),
             'route_arr' => $route->route_arr,
             'color' => $route->color,
             'bus_stop_arr' => $this->bus_stop_arr,
@@ -137,7 +136,6 @@ class RouteController extends Controller
         ]);
         $route->title = $request->input('route_name');
         $route->description = $request->input('route_desc');
-        $route->bus_stops = json_encode($request->input('bus_stop'));
         $route->route_arr = $request->input('route_arr');
         $route->polyline = $request->input('path_arr');
         $route->color = '#' . $request->input('color');

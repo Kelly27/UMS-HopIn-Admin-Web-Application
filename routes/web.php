@@ -18,9 +18,6 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::post('driver_login', 'DriverAuthController@login');
     Route::post('bus/{id}/updateLocation', 'BusController@updateLocation');
     Route::post('bus/{id}/update_next_stop', 'BusController@update_next_stop');
-    Route::post('report/store', 'ReportController@store');
-    Route::post('reservation/store', 'ReservationController@store');
-
     Route::get('driver_register', 'DriverAuthController@register');
     Route::get('announcement/getAnnouncement', 'AnnouncementController@getAnnouncementData');
     Route::get('bus/getBusTrackingData', 'BusController@getBusTrackingData');
@@ -30,6 +27,10 @@ Route::group(['middleware' => ['api', 'cors'], 'prefix' => 'api'], function(){
     Route::get('driver/{id}/getAssignedInfo', 'DriverController@getAssignedInfo');
     Route::get('route/getRoute', 'RouteController@getRouteData');
     Route::get('route/{id}/getRelevantBuses', 'RouteController@getRelevantBuses');
+    Route::post('report/store', 'ReportController@store');
+    Route::post('reservation/store', 'ReservationController@store');
+    Route::get('reservation/getNewID', 'ReservationController@getNewID');
+    Route::get('reservation/getReservationData', 'ReservationController@getReservationData');
 });
 
 Route::group(['middleware' => ['web','auth']], function () {

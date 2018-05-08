@@ -134,4 +134,15 @@ class ReservationController extends Controller
             'req_time' => $req_time,
         ]);
     }
+
+    //api
+    public function getNewID(){
+        $reservation = Reservation::orderBy('id', 'desc')->first();
+        return $reservation->id;
+    }
+
+    public function getReservationData(){
+        $reservations = Reservation::all();
+        return $reservations;
+    }
 }

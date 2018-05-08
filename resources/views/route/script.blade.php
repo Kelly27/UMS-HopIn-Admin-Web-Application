@@ -40,12 +40,6 @@
         removeAllMarkers();
     }
 
-    //save selected route data to database
-    function setSelectedRoute(data, plineArray){
-        let routeDom = document.getElementById('setRouteArr');
-        routeDom.value = JSON.stringify(data);
-    }
-
     var el = document.getElementById('stop-item');
     var sortable = Sortable.create(el,{
         group: {name: "sorting", put: true, pull: true},
@@ -128,7 +122,9 @@
     function addPath(path){
         // pathArchive = path;
         pathArr.push(path);
+        //path.push(path);
         createPolylines(pathArr);
+        console.log('path',path);
         console.log('pathArr', pathArr);
         saveDirectionData(pathArr);
     };
@@ -171,9 +167,16 @@
     }
 
     //saves the data from google map direction
-    function saveDirectionData(data){
-        directionDataArr.push(data);
+    function saveDirectionData(){
+        // directionDataArr.push(data);
         let pathDom = document.getElementById('setPathArr');
-        pathDom.value = JSON.stringify(directionDataArr);
+        pathDom.value = JSON.stringify(pathArr);
+        console.log(pathDom.value);
+    }
+
+        //save selected route data to database
+    function setSelectedRoute(data, plineArray){
+        let routeDom = document.getElementById('setRouteArr');
+        routeDom.value = JSON.stringify(data);
     }
 </script>

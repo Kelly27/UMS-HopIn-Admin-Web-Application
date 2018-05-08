@@ -69,7 +69,7 @@ $(function() {
         }]
     });
 
-    //form validation in modal 
+    //form validation in modal
     $('.select_bus').change(function() {
         var selected = $('.select_bus').find(":selected");
         console.log(selected.val());

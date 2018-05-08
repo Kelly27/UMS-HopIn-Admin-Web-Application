@@ -67,10 +67,20 @@ class DashboardController extends Controller
             return '<a href="home/' . $d->id . '/deleteOperation" class="action"><i class="material-icons">delete</i></a>';
         })
         ->editColumn('route', function($d){
-            return $d->routes->title;
+            if($d->routes){
+                return $d->routes->title;
+            }
+            else{
+                return "<span>Route is not exist.</span>";
+            }
         })
         ->editColumn('driver', function($d){
-            return $d->drivers->name;
+            if($d->drivers){
+                return $d->drivers->name;
+            }
+            else{
+                return 'Driver is not exist.';
+            }
         })
         ->editColumn('next_stop', function($d){
             $n = ' ';
